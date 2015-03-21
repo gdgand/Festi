@@ -8,9 +8,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from os.path import dirname, join
+BASE_DIR = dirname(dirname(dirname(__file__)))
+ROOT = lambda *args: join(BASE_DIR, *args)
 
 
 # Quick-start development settings - unsuitable for production
@@ -18,16 +19,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'i+k#v28%939j(heqh8p9@aln_fa_pfy5x61qr(w^9ur0qe1%@n'
+SECRET_KEY = os.environ.get('SECRET_KEY', SECRET_KEY)
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-
-# Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -53,22 +51,17 @@ ROOT_URLCONF = 'festi.urls'
 WSGI_APPLICATION = 'festi.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': ROOT('db.sqlite3'),
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -77,7 +70,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = ROOT('..', 'staticfiles')
+STATICFILES_DIRS = (
+    ROOT('festi', 'bower_components'),
+)
+
