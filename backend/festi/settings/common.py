@@ -46,6 +46,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'festi.middleware.PutMethodMiddleware',
+    'festi.middleware.JsonResponseMiddleware',
 )
 
 ROOT_URLCONF = 'festi.urls'

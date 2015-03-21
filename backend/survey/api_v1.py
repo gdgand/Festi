@@ -4,34 +4,40 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from .models import User, Event, Survey
+from .forms import UserCreateForm, UserUpdateForm, EventForm, SurveyForm
 
 
 @require_http_methods(['POST'])
 @csrf_exempt
 def user_new(request):
     u'새 유저 등록'
-    raise NotImplemented
+    form = UserCreateForm(request.POST)
+    if form.is_valid():
+        user = form.save()
+        return dict(ok=True)
+    return dict(ok=False, errors=form.errors)
 
 
 @require_http_methods(['PUT'])
 @csrf_exempt
 def user_update(request, user_uid):
     u'유저 정보 수정'
-    print request.PUT
     user = get_object_or_404(User, uid=user_uid)
-    raise NotImplemented
+    form = UserUpdateForm(request.PUT, instance=user)
+    if form.is_valid():
+        user = form.save()
+        return dict(ok=True)
+    return dict(ok=False, errors=form.errors)
 
 
 def events_list(request):
     u'이벤트 목록 조회'
-    Event.objects.filter(is_public=True)
-    raise NotImplemented
+    return Event.objects.filter(is_public=True)
 
 
 def event_detail(request, event_id):
     u'이벤트 내용 조회'
-    event = get_object_or_404(Event, id=event_id)
-    raise NotImplemented
+    return get_object_or_404(Event, id=event_id)
 
 
 @require_http_methods(['POST'])

@@ -24,7 +24,7 @@ class User(Base):
 
 class Event(Base):
     name = models.CharField(max_length=100, db_index=True)
-    props = JSONField(verbose_name='Questions')
+    props = JSONField(verbose_name='Questions', blank=True)
     begin = models.DateTimeField()
     end = models.DateTimeField()
     is_public = models.BooleanField(default=False, db_index=True)
@@ -32,10 +32,25 @@ class Event(Base):
     def __unicode__(self):
         return self.name
 
+    def as_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'props': self.props,
+            'begin': self.begin,
+            'end': self.end,
+        }
+
 
 class Survey(Base):
     event = models.ForeignKey(Event)
     user = models.ForeignKey(User)
     props = JSONField()
     is_approved = models.BooleanField(default=False, db_index=True)
+
+    def as_dict(self):
+        return {
+            'props': self.props,
+            'is_approved': self.is_approved,
+        }
 
