@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'survey',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,7 +51,6 @@ ROOT_URLCONF = 'festi.urls'
 
 WSGI_APPLICATION = 'festi.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -58,21 +58,17 @@ DATABASES = {
     }
 }
 
-
 LANGUAGE_CODE = 'ko-kr'
-
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = ROOT('..', 'staticfiles')
 STATICFILES_DIRS = (
+    ROOT('festi', 'static'),
     ROOT('festi', 'bower_components'),
 )
 
