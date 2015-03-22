@@ -14,12 +14,21 @@ BASE_DIR = dirname(dirname(dirname(__file__)))
 ROOT = lambda *args: join(BASE_DIR, *args)
 
 
+try:
+    import settings_local
+    for v in dir(settings_local):
+        if not v.startswith('__'):
+            os.environ[v] = getattr(settings_local, v)
+except ImportError:
+    pass
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'i+k#v28%939j(heqh8p9@aln_fa_pfy5x61qr(w^9ur0qe1%@n'
-SECRET_KEY = os.environ.get('SECRET_KEY', SECRET_KEY)
+SECRET_KEY = os.environ.get('FASTI_SECRET_KEY', SECRET_KEY)
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -34,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
+    'djcelery_email',
     'survey',
 )
 
@@ -73,4 +84,29 @@ STATICFILES_DIRS = (
     ROOT('festi', 'static'),
     ROOT('festi', 'bower_components'),
 )
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('FASTI_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('FASTI_EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+
+CELERY_EMAIL_TASK_CONFIG = {
+    'name': 'djcelery_email_send_multiple',
+    'rate_limit' : '50/m',
+    'ignore_result': False,
+}
+
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = BROKER_URL
+CELERY_ACCEPT_CONTENT = ['pickle']
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
+
+
+import djcelery
+djcelery.setup_loader()
 
