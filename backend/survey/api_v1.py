@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from .models import User, Event, Survey
-from .forms import UserCreateForm, UserUpdateForm, EventForm, SurveyForm
+from .forms import UserCreateForm, UserUpdateForm, SurveyCreateForm, SurveyUpdateForm
 
 
 @require_http_methods(['POST'])
@@ -44,7 +44,11 @@ def event_detail(request, event_id):
 @csrf_exempt
 def survey_new(request, event_id):
     u'이벤트 신청'
-    raise NotImplemented
+    form = SurveyCreateForm(request.POST)
+    if form.is_valid():
+        user = form.save()
+        return dict(ok=True)
+    return dict(ok=False, errors=form.errors)
 
 
 @require_http_methods(['GET', 'PUT', 'DELETE'])
@@ -54,15 +58,20 @@ def survey_form(request, event_id, user_uid):
     survey = get_object_or_404(Survey, event__id=event_id, user__uid=user_uid)
 
     if request.method == 'GET':
-        pass
+        return survey
 
     elif request.method == 'PUT':
-        pass
+        form = SurveyUpdateForm(request.PUT, instance=survey)
+        if form.is_valid():
+            user = form.save()
+            return dict(ok=True)
+        return dict(ok=False, errors=form.errors)
 
     elif request.method == 'DELETE':
-        pass
+        survey.delete()
+        return dict(ok=True)
 
-    raise NotImplemented
+    return dict(ok=False)
 
 
 urlpatterns = patterns('',

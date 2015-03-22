@@ -48,6 +48,9 @@ class Survey(Base):
     props = JSONField()
     is_approved = models.BooleanField(default=False, db_index=True)
 
+    class Meta:
+        unique_together = (('event', 'user'),)
+
     def as_dict(self):
         return {
             'props': self.props,
