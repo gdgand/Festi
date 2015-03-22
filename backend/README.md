@@ -1,4 +1,14 @@
 
+celery
+======
+
+broker 로 redis-server 사용
+
+````
+python manage.py celery worker --events
+python manage.py celery events
+````
+
 backend/settings_local.py example
 =================================
 
