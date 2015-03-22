@@ -18,6 +18,9 @@ class User(Base):
     profile_image_url = models.URLField(blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
 
+    class Meta:
+        unique_together = (('auth_type', 'uid'),)
+
     def __unicode__(self):
         return self.email
 
