@@ -36,7 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'import_export',
     'djcelery',
-    'djcelery_email',
     'survey',
 )
 
@@ -78,19 +77,12 @@ STATICFILES_DIRS = (
 )
 
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
-
-CELERY_EMAIL_TASK_CONFIG = {
-    'name': 'djcelery_email_send_multiple',
-    'rate_limit' : '50/m',
-    'ignore_result': True,
-}
 
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = BROKER_URL

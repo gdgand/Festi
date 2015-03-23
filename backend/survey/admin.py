@@ -36,7 +36,7 @@ class SurveyAdmin(ExportMixin, admin.ModelAdmin):
                 lines = survey.event.approve_email_content.strip().splitlines()
                 title = lines[0]
                 content = '\n'.join(lines[1:])
-                event_notification(survey.id, title, content, [survey.user.email])
+                event_notification.s(survey.id, title, content, [survey.user.email]).delay()
                 count += 1
         if count == 0:
             self.message_user(request, u'전송할 유저가 없습니다.')
