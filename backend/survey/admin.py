@@ -1,5 +1,7 @@
 # coding: utf8
 from django.contrib import admin
+from import_export import resources
+from import_export.admin import ExportMixin
 from .models import User, Event, Survey
 from .tasks import event_notification
 
@@ -14,7 +16,13 @@ class EventAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 
 
-class SurveyAdmin(admin.ModelAdmin):
+class SurveyResource(resources.ModelResource):
+    class Meta:
+        model = Survey
+        fields = ('event__name', 'user__email', 'user__name', 'props', 'is_approved', 'is_notified', 'created_at', 'updated_at')
+
+
+class SurveyAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ('event', 'user', 'is_approved', 'is_notified', 'created_at', 'updated_at')
     list_editable = ('is_approved',)
     list_filter = ('is_approved', 'is_notified',)
@@ -35,6 +43,8 @@ class SurveyAdmin(admin.ModelAdmin):
         else:
             self.message_user(request, u'{} 명의 유저에게 이메일을 전송 중입니다.'.format(count))
     send_approve_email.short_description = u'선택/승인된 survey 유저에게 승인메일 보내기'
+
+    resource_class = SurveyResource
 
 admin.site.register(Survey, SurveyAdmin)
 
