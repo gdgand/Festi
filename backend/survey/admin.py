@@ -46,5 +46,8 @@ class SurveyAdmin(ExportMixin, admin.ModelAdmin):
 
     resource_class = SurveyResource
 
+    def has_add_permission(self, request):
+        return False
+
 admin.site.register(Survey, SurveyAdmin)
 
