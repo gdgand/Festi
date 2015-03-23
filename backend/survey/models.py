@@ -51,8 +51,9 @@ class Survey(Base):
     event = models.ForeignKey(Event)
     user = models.ForeignKey(User)
     props = JSONField()
-    is_approved = models.BooleanField(default=False, db_index=True)
-    is_notified = models.BooleanField(default=False, db_index=True)
+    is_approved = models.BooleanField(default=False, db_index=True, verbose_name=u'승인여부')
+    is_notified = models.BooleanField(default=False, db_index=True, verbose_name=u'알림여부')
+    is_attended = models.BooleanField(default=False, db_index=True, verbose_name=u'참석여부')
 
     class Meta:
         unique_together = (('event', 'user'),)
@@ -62,5 +63,6 @@ class Survey(Base):
             'props': self.props,
             'is_approved': self.is_approved,
             'is_notified': self.is_notified,
+            'is_attended': self.is_attended,
         }
 

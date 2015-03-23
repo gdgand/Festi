@@ -19,13 +19,13 @@ admin.site.register(Event, EventAdmin)
 class SurveyResource(resources.ModelResource):
     class Meta:
         model = Survey
-        fields = ('event__name', 'user__email', 'user__name', 'props', 'is_approved', 'is_notified', 'created_at', 'updated_at')
+        fields = ('event__name', 'user__email', 'user__name', 'props', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
 
 
 class SurveyAdmin(ExportMixin, admin.ModelAdmin):
-    list_display = ('event', 'user', 'is_approved', 'is_notified', 'created_at', 'updated_at')
-    list_editable = ('is_approved',)
-    list_filter = ('is_approved', 'is_notified',)
+    list_display = ('event', 'user', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
+    list_editable = ('is_approved', 'is_attended')
+    list_filter = ('is_approved', 'is_notified', 'is_attended')
     ordering = ('created_at', 'updated_at')
     search_fields = ('user__name', 'user__email',)
     actions = ['send_approve_email']
