@@ -1,8 +1,54 @@
 {% extends "survey/layout.html" %}
 
-{% block content %}
-    <div class="container">
-        survey/index.html
-    </div>
-{% endblock %}
+{% block react %}
+<script type="text/jsx">
 
+var Header = React.createClass({
+  render: function() {
+    return (
+      <div className="navbar navbar-default navbar-fixed-top">
+        <div className="container">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+            </button>
+            <a className="navbar-brand" href="/">Survey</a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+});
+
+var Footer = React.createClass({
+  render: function() {
+    return (
+      <footer className="footer">
+        <div className="container">
+          <p className="text-muted">&copy; GDG Korea</p>
+        </div>
+      </footer>
+    );
+  }
+});
+
+var App = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Header />
+        <Footer />
+      </div>
+    );
+  }
+})
+
+React.render(
+  <App />,
+  document.body
+);
+</script>
+{% endblock %}
