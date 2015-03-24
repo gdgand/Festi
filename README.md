@@ -14,9 +14,10 @@ vagrant up
 
 ````
 vagrant ssh
+server
 ````
 
-쉘에 접속하면 셀러리가 백그라운드로 돌고 웹 서버가 동작합니다.
+쉘에 접속하여 `server`를 수행하면 셀러리가 백그라운드로 돌고 웹 서버가 동작합니다.
 
 호스트 웹 브라우저에서 [http://localhost:8000](http://localhost:8000)해보세요.
 
