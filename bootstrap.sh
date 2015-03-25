@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 apt-get update
+apt-get upgrade
+
 apt-get install -y python-pip python-dev
 apt-get install -y npm
 apt-get install -y redis-server
