@@ -31,3 +31,13 @@ body > .container {
 code {
     font-size: 80%;
 }
+
+.body-container {
+    padding: 60px 15px 0;
+}
+
+.login {
+    position: relative;
+    margin: 50px auto;
+    width: 300px;
+}

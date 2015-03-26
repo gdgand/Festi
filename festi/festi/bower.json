@@ -12,6 +12,8 @@
     "font-awesome": "~4.2.0",
     "select2": "~3.5.2",
     "toastr": "~2.1.1",
-    "react": "~0.13.1"
+    "react": "~0.13.1",
+    "flux": "~2.0.2",
+    "eventEmitter": "~4.2.11"
   }
 }
