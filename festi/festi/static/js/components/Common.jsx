@@ -1,5 +1,30 @@
 var Header = React.createClass({
+    getInitialState: function () {
+        return this._getSession();
+    },
+
+    componentDidMount: function () {
+        FestiStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount: function () {
+        FestiStore.removeChangeListener(this._onChange);
+    },
+
     render: function () {
+        var text, task;
+        if (this.state.fbAuthState == FestiConstants.STATE_FB_AUTH_NONE) {
+            text = '';
+            task = null;
+        } else if (this.state.fbAuthState == FestiConstants.STATE_FB_AUTH_CONNECTED) {
+            text = 'Sign out';
+            task = this._signOut;
+        } else {
+            //text = 'Sign in';
+            text = 'Sign in';
+            task = this._openSignInPanel;
+        }
+
         return (
             <div className="navbar navbar-default navbar-fixed-top">
                 <div className="container">
@@ -7,8 +32,8 @@ var Header = React.createClass({
                         <a className="navbar-brand" href="/survey">Survey</a>
                     </div>
                     <div className="navbar-right">
-                        <button type="button" className="btn btn-primary navbar-btn" onClick={this._signin}>
-                            Sign in
+                        <button type="button" className="btn btn-primary navbar-btn" onClick={task}>
+                        {text}
                         </button>
                     </div>
                 </div>
@@ -16,8 +41,23 @@ var Header = React.createClass({
         );
     },
 
-    _signin: function () {
-        FestiActions.openSignIn();
+    _signOut: function () {
+        FestiActions.signOutFb();
+    }
+    ,
+
+    _openSignInPanel: function () {
+        FestiActions.openSignInPanel();
+    },
+
+    _getSession: function () {
+        return {
+            fbAuthState: FestiStore.getFbAuthState(),
+        };
+    },
+
+    _onChange: function () {
+        this.setState(this._getSession());
     }
 });
 
@@ -35,7 +75,7 @@ var Footer = React.createClass({
 
 var Facebook = React.createClass({
     getInitialState: function () {
-        return this._getFestiSession();
+        return this._getSession();
     },
 
     componentDidMount: function () {
@@ -47,8 +87,9 @@ var Facebook = React.createClass({
     },
 
     render: function () {
-        var style = {};
-        style.visibility = this.state.visibility;
+        var style = {
+            visibility: this.state.visibility
+        };
 
         return (
             <div className="panel panel-default login" style={style}>
@@ -60,15 +101,22 @@ var Facebook = React.createClass({
                     </h3>
                 </div>
                 <div className="panel-body">
-                    <button type="button" className="btn btn-primary btn-lg">Sign in with Facebook</button>
+                    <button type="button" className="btn btn-primary btn-lg" onClick={this._signIn}>
+                        Sign in with Facebook
+                    </button>
                 </div>
             </div>
         );
     },
 
-    _getFestiSession: function () {
+    _signIn: function () {
+      FestiActions.signInFb();
+    },
+
+    _getSession: function () {
         return {
-            visibility: FestiStore.isSignInOpen() ? 'visible' : 'hidden'
+            visibility: FestiStore.isSignInOpen() ? 'visible' : 'hidden',
+            fbAuthState: FestiStore.getFbAuthState()
         };
     },
 
@@ -77,6 +125,6 @@ var Facebook = React.createClass({
     },
 
     _onChange: function () {
-        this.setState(this._getFestiSession());
+        this.setState(this._getSession());
     }
 });

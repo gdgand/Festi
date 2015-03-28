@@ -14,6 +14,15 @@ var keyMirror = function(obj) {
 };
 
 FestiConstants = keyMirror({
-    OPEN_SIGNIN: null,
-    CLOSE_SIGNIN: null
+    ACTION_OPEN_SIGNIN: null,
+    ACTION_CLOSE_SIGNIN: null,
+    ACTION_SIGN_IN_FB: null,
+    ACTION_SIGN_OUT_FB: null,
+    ACTION_CHECK_FB_AUTH: null,
+    ACTION_CHANGE_AUTH_STATUS: null,
+    STATE_FB_AUTH_NONE: null,
+    STATE_FB_AUTH_CONNECTED: null,
+    STATE_FB_AUTH_NOT_AUTHORIZED: null,
+    STATE_FB_AUTH_ELSE: null,
+    EVENT_CHANGE: null,
 });
