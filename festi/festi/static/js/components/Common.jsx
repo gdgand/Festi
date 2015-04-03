@@ -20,7 +20,6 @@ var Header = React.createClass({
             text = 'Sign out';
             task = this._signOut;
         } else {
-            //text = 'Sign in';
             text = 'Sign in';
             task = this._openSignInPanel;
         }
