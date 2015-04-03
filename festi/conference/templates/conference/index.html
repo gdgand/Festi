@@ -1,6 +1,17 @@
 {% extends "conference/layout.html" %}
 
 {% block content %}
-    index.html
-{% endblock %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}festi/startbootstrap-agency-1.0.2/css/agency.css" />
 
+<script src="{{ STATIC_URL }}festi/startbootstrap-agency-1.0.2/js/agency.js"></script>
+
+<header>
+<div class="container">
+    <div class="intro-text">
+        <div class="intro-lead-in">GDG Android Conference</div>
+        <div class="intro-heading">환영합니다!</div>
+        <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+    </div>
+</div>
+</header>
+{% endblock %}
