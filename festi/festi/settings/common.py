@@ -77,6 +77,9 @@ STATICFILES_DIRS = (
     ROOT('festi', 'bower_components'),
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = ROOT('..', 'media')
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
