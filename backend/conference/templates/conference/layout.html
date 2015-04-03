@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<title>conference</title>
+</head>
+<body>
+
+    <ul>
+        <li><a href="{% url "conference:index" %}">home</a></li>
+        <li><a href="{% url "conference:speaker" %}">speaker</a></li>
+        <li><a href="{% url "conference:about" %}">about</a></li>
+    </ul>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

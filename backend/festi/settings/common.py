@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'import_export',
     'djcelery',
+    'conference',
     'survey',
 )
 
