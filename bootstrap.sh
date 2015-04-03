@@ -4,9 +4,7 @@ add-apt-repository -y ppa:chris-lea/node.js
 apt-get update
 apt-get upgrade -y
 
-apt-get install -y python-pip python-dev
-apt-get install -y nodejs
-apt-get install -y redis-server
+apt-get install -y python-pip python-dev nodejs redis-server git
 
 npm upgrade -g npm
 npm install -g bower
