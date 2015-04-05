@@ -1,24 +1,60 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<meta id="viewport" name="viewport"
-      content="width=320, initial-scale=1, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scalable=no;"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/dist/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap-material-design/dist/css/material.min.css"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}festi/bootstrap.css"/>
-<script src="{{ STATIC_URL }}react/react-with-addons.js"></script>
-<script src="{{ STATIC_URL }}flux/dist/Flux.js"></script>
-<script src="{{ STATIC_URL }}react/JSXTransformer.js"></script>
-<script src="{{ STATIC_URL }}eventEmitter/EventEmitter.js"></script>
-<script src="{{ STATIC_URL }}js/constants/FestiConstants.js"></script>
-<script src="{{ STATIC_URL }}js/dispatchers/Dispatcher.js"></script>
-<script src="{{ STATIC_URL }}js/dispatchers/AppDispatcher.js"></script>
-<script src="{{ STATIC_URL }}js/stores/FestiStores.js"></script>
-<script src="{{ STATIC_URL }}js/actions/FestiActions.js"></script>
-{% block react %}{% endblock %}
-<title>{% block title %}survey{% endblock %}</title>
+<meta charset="utf-8" />
+<title>{% block title %}conference{% endblock %}</title>
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scalable=no;" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}survey/layout.css" />
+{# <script src="{{ STATIC_URL }}jquery/dist/jquery.min.js"></script> #}
+{% block extra_head %}{% endblock %}
 </head>
 <body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "conference:index" %}">{{ event.name }}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul id="top-nav" class="nav navbar-nav">
+            {% block topnav %}{% endblock %}
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "account_logout" %}">로그아웃</a></li>
+                {% endif %}
+            </ul>
+
+            <!--
+            <form id="search_form" method="GET" action="" class="navbar-search pull-left">
+                <input type="text" name="q" value="{{ q }}" class="search-query span2" placeholder="검색" />
+            </form>
+            -->
+
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+{% if messages %}
+<div class="container">
+    <div class="row">
+        {% for message in messages %}
+        <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
 </body>
 </html>

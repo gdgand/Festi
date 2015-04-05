@@ -1,0 +1,45 @@
+body {
+    padding-top: 60px;
+    background-image: url("/static/survey/bg.jpg");
+}
+
+.speaker {
+    height: 400px;
+    text-align: center;
+}
+
+.speaker .profile_image {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    /* background: url(http://link-to-your/image.jpg) no-repeat; */
+    background-size: 200px 200px;
+    display: block;
+}
+
+.speaker .profile_image img {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 200px;
+}
+
+.speaker p {
+    margin: 0;
+}
+
+.speaker .name {
+}
+.speaker .profile {
+}
+
+.speaker .keyword {
+}
+
+.speaker .topic {
+}
+
+.speaker .detail {
+}
+

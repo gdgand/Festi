@@ -104,6 +104,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'METHOD': 'oauth2',
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.2',
+        'EMAIL_VERIFICATION': 'none',
     }
 }
 

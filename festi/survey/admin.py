@@ -2,13 +2,18 @@
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ExportMixin
-from .models import Event, Survey
+from .models import Event, Speaker, Survey
 from .tasks import event_notification
 
 
 class EventAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Event, EventAdmin)
+
+
+class SpeakerAdmin(admin.ModelAdmin):
+    list_display = ('event', 'idx', 'name', 'keyword', 'topic')
+admin.site.register(Speaker, SpeakerAdmin)
 
 
 class SurveyResource(resources.ModelResource):

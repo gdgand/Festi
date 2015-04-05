@@ -1,4 +1,4 @@
-{% extends "conference/layout.html" %}
+{% extends "survey/layout.html" %}
 
 {% block content %}
 <style>
@@ -26,10 +26,12 @@
         {% endif %}
         </h3>
 
-        {% if not survey.is_approved %}
-            <div class="alert alert-info">승인대기 중</div>
-        {% else %}
-            <div class="alert alert-success">승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)</div>
+        {% if survey %}
+            {% if not survey.is_approved %}
+                <div class="alert alert-info">승인대기 중</div>
+            {% else %}
+                <div class="alert alert-success">승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)</div>
+            {% endif %}
         {% endif %}
 
         {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}

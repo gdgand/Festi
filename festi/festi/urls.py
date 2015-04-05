@@ -4,10 +4,10 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^survey/', include('survey.urls', namespace='survey')),
     url(r'^accounts/', include('account.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'', include('conference.urls', namespace='conference')),
+    url(r'', include('survey.urls', namespace='survey')),
 )
 
 urlpatterns += patterns('',
