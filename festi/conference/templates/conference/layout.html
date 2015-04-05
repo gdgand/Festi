@@ -11,6 +11,18 @@
         <li><a href="{% url "conference:about" %}">about</a></li>
     </ul>
 
+    {% if user.is_authenticated %}
+        <a href="{% url "account_logout" %}">로그아웃</a>
+    {% endif %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </body>

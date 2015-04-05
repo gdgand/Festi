@@ -1,0 +1,22 @@
+{% extends "conference/layout.html" %}
+
+{% block content %}
+
+    <h3>
+    {% if not survey %}
+        {{ event.name }} 신청
+    {% else %}
+        {{ event.name }} 신청 수정
+    {% endif %}
+    </h3>
+
+    <img src="{{ avatar_url }}" style="display: block; width: 100px;" />
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+    </form>
+{% endblock %}
+

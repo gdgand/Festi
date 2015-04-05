@@ -1,6 +1,7 @@
 # coding: utf8
 from django.db import models
 from jsonfield import JSONField
+from django.conf import settings
 
 
 class Base(models.Model):
@@ -11,6 +12,7 @@ class Base(models.Model):
         abstract = True
 
 
+'''
 class User(Base):
     AUTH_TYPES = (('facebook', 'facebook'),)
     auth_type = models.CharField(max_length=10, choices=AUTH_TYPES, default='facebook', db_index=True)
@@ -24,6 +26,7 @@ class User(Base):
 
     def __unicode__(self):
         return self.email
+'''
 
 
 class Event(Base):
@@ -49,7 +52,7 @@ class Event(Base):
 
 class Survey(Base):
     event = models.ForeignKey(Event)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     props = JSONField()
     is_approved = models.BooleanField(default=False, db_index=True, verbose_name=u'승인여부')
     is_notified = models.BooleanField(default=False, db_index=True, verbose_name=u'알림여부')
