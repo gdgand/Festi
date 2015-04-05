@@ -31,6 +31,31 @@ server
 vagrant reload --provision
 ````
 
+### Docker 설정
+
+#### Ubuntu
+ubuntu `/etc/default/docker` 파일을 열어 아래와 같이 추가합니다.
+
+````
+DOCKER_OPTS="$DOCKER_OPTS --insecure-registry registry.android.gdg.kr"
+````
+
+쉘에서 다음 커맨드를 입력합니다.
+
+````
+sudo service docker restart
+````
+
+#### Mac
+
+`boot2docker ssh`로 쉘에 접속하여 `/var/lib/boot2docker/profile` 파일을 만들어 아래의 내용을 넣습니다.`
+````
+EXTRA_ARGS="--insecure-registry registry.android.gdg.kr"
+````
+
+`sudo /etc/init.d/docker restart`을 쉘에 입력하여 갱신합니다.
+
+
 ## celery
 
 broker 로 redis-server 사용

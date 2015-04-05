@@ -114,7 +114,7 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = ROOT('..', 'staticfiles')
+STATIC_ROOT = ROOT('staticfiles')
 STATICFILES_DIRS = (
     ROOT('festi', 'static'),
     ROOT('festi', 'bower_components'),
@@ -136,6 +136,7 @@ CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
 
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 import djcelery
 djcelery.setup_loader()
