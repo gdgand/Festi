@@ -4,10 +4,11 @@ MAINTAINER Festi Team
 RUN apt-get -y install software-properties-common
 RUN add-apt-repository -y ppa:chris-lea/node.js
 
-RUN apt-get upgrade
+RUN apt-get upgrade -y
 RUN apt-get update -y
+RUN apt-get autoremove -y
 
-RUN apt-get install -y python-pip python-dev nodejs redis-server git
+RUN apt-get install -y python-pip python-dev nodejs redis-server git libmysqlclient-dev
 
 RUN npm install -g bower
 
