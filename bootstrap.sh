@@ -17,6 +17,7 @@ sudo -u vagrant -H bower install
 echo "function server {" > /home/vagrant/.bashrc
 echo "cd /home/vagrant/festi" >> /home/vagrant/.bashrc
 echo "python manage.py syncdb" >> /home/vagrant/.bashrc
+echo "python manage.py makemigrations" >> /home/vagrant/.bashrc
 echo "python manage.py migrate" >> /home/vagrant/.bashrc
 echo "python manage.py runserver 0.0.0.0:8000" >> /home/vagrant/.bashrc
 echo "}" >> /home/vagrant/.bashrc
