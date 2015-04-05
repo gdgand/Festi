@@ -36,6 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'import_export',
     'djcelery',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'conference',
     'survey',
 )
@@ -51,6 +56,27 @@ MIDDLEWARE_CLASSES = (
     'festi.middleware.PutMethodMiddleware',
     'festi.middleware.JsonResponseMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'festi.urls'
 
@@ -70,6 +96,17 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email'],
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.2',
+    }
+}
+
 STATIC_URL = '/static/'
 STATIC_ROOT = ROOT('..', 'staticfiles')
 STATICFILES_DIRS = (
@@ -79,7 +116,6 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = ROOT('..', 'media')
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True

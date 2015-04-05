@@ -24,21 +24,26 @@
 <!-- navbar -->
 <div class="navbar navbar-header navbar-fixed-top navbar-default navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-        <a class="navbar-brand" href="{{ URL }}/">Android Conference</a>
-        <li><a href="{{ URL }}/about">About</a></li>
-        <li><a href="{{ URL }}/speaker">Speaker</a></li>
-        <li><a href="{{ URL }}/survey">Survey</a></li>
+        <a class="navbar-brand" href="{% url "conference:index" %}">Android Conference</a>
+        <li><a href="{% url "conference:about" %}">About</a></li>
+        <li><a href="{% url "conference:speaker" %}">Speaker</a></li>
+        {% if event %}
+            <li><a href="{% url "survey:form" event.id %}">Survey</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url "account_logout" %}">로그아웃</a></li>
+        {% endif %}
     </ul>
 </div>
 
-<!--
-    <ul>
-        <li><a href="{% url "conference:index" %}">home</a></li>
-        <li><a href="{% url "conference:speaker" %}">speaker</a></li>
-        <li><a href="{% url "conference:about" %}">about</a></li>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
     </ul>
+    {% endif %}
 
--->
     {% block content %}
     {% endblock %}
 </body>

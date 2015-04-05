@@ -1,0 +1,35 @@
+{% extends "conference/layout.html" %}
+
+{% block content %}
+
+<style>
+    #survey_form ul {
+        margin: 0;
+        padding: 0;
+    }
+    #survey_form label {
+        display: none;
+    }
+    #survey_form *[readonly=readonly] {
+        background: #eee;
+        border: 0;
+    }
+</style>
+
+    <h3>
+    {% if not survey %}
+        {{ event.name }} 신청
+    {% else %}
+        {{ event.name }} 신청 수정
+    {% endif %}
+    </h3>
+
+    {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}
+
+    <form id="survey_form" action="" method="POST">
+        {% csrf_token %}
+        {{ form.props }}
+        <input type="submit" value="submit" >
+    </form>
+{% endblock %}
+

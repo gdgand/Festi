@@ -5,3 +5,5 @@ django-import-export==0.2.6
 jsonfield==1.0.3
 redis==2.10.3
 xlrd==0.9.3
+django-allauth==0.19.1
+django-adminplus==0.3

@@ -1,5 +1,19 @@
 {% extends "conference/layout.html" %}
 
+{% comment %}
+    {% if not survey %}
+        <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" >신청하기</a>
+    {% else %}
+        이미 신청하셨습니다.
+        <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" >신청폼 수정</a>
+        {% if not survey.is_approved %}
+            승인대기 중
+        {% else %}
+            승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
+        {% endif %}
+    {% endif %}
+{% endcomment %}
+
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}festi/startbootstrap-agency-1.0.2/css/agency.css" />
 

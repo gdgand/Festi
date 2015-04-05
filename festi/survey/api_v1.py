@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from .models import User, Event, Survey
-from .forms import UserCreateForm, UserUpdateForm, SurveyCreateForm, SurveyUpdateForm
+from .forms_api import UserCreateForm, UserUpdateForm, SurveyCreateForm, SurveyUpdateForm
 
 
 @require_http_methods(['POST'])
