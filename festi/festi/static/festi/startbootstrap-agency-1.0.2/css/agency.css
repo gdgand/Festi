@@ -776,7 +776,22 @@ img::-moz-selection {
     text-align: center;
     color: #8dc63f;
     background-attachment: scroll;
-    background-image: url(../img/hackathon.jpg);
+    /*background-image: url(../img/hackathon.png);*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.ganzi-image {
+    min-height: 552px;
+    text-align: center;
+    color: #8dc63f;
+    background-attachment: scroll;
+    background-image: url(../img/hackathon.png);
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0.8;
@@ -789,3 +804,5 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #fed136;
 }
+
+

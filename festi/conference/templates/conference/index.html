@@ -22,11 +22,13 @@
                 <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary">신청하기</a>
             {% else %}
                 <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary">신청폼 수정</a>
+                <p>
                 {% if not survey.is_approved %}
                     승인대기 중
                 {% else %}
                     승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
                 {% endif %}
+                </p>
             {% endif %}
         </div>
 
@@ -68,6 +70,12 @@
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>
+    </div>
+</section>
+
+<section id="site-image" class="ganzi-image">
+    <div class="container">
+
     </div>
 </section>
 {% endblock %}
