@@ -57,3 +57,12 @@ target/
 festi/db.sqlite3
 
 .vagrant
+
+# IDEA
+.idea/
+
+# npm
+node_modules
+
+# bower
+bower_components

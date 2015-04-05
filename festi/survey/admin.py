@@ -1,4 +1,5 @@
 # coding: utf8
+from django.conf.urls import patterns
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ExportMixin
@@ -14,7 +15,7 @@ admin.site.register(Event, EventAdmin)
 class SurveyResource(resources.ModelResource):
     class Meta:
         model = Survey
-        fields = ('event__name', 'user__email', 'props', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
+        fields = ('event__name', 'user__email', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
 
 
 class SurveyAdmin(ExportMixin, admin.ModelAdmin):
@@ -24,6 +25,17 @@ class SurveyAdmin(ExportMixin, admin.ModelAdmin):
     ordering = ('created_at', 'updated_at')
     search_fields = ('user__email',)
     actions = ['send_approve_email']
+    exclude = ('props',)
+
+    def get_urls(self):
+        urls = super(SurveyAdmin, self).get_urls()
+        return urls + patterns('',
+            (r'^props/$', self.admin_site.admin_view(self.props_view)),
+        )
+
+    def props_view(self):
+        return 'props_view : {}'.format(self)
+
     def send_approve_email(self, request, queryset):
         count = 0
         for survey in queryset:
