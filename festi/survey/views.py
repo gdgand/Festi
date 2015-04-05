@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import SurveyForm
-from .models import Event, Survey
+from .models import Event, Speaker, Survey
 
 
 def facebook_user_required(fn):
@@ -20,6 +20,25 @@ def facebook_user_required(fn):
 
 def index(request):
     return render(request, 'survey/index.html', {
+    })
+
+
+def detail(request, event_slug):
+    event = get_object_or_404(Event, slug=event_slug)
+
+    survey = None
+    if request.user.is_authenticated():
+        try:
+            survey = Survey.objects.get(event=event, user=request.user)
+        except Survey.DoesNotExist:
+            pass
+
+    speaker_list = Speaker.objects.filter(event=event).order_by('idx')
+
+    return render(request, 'survey/detail.html', {
+        'event': event,
+        'survey': survey,
+        'speaker_list': speaker_list,
     })
 
 
@@ -54,7 +73,7 @@ def form(request, event_id):
         if survey:
             props = survey.props
 
-        for event_prop in event.props:
+        for event_prop in (event.props or []):
             for prop in props:
                 if int(prop['id']) == int(event_prop['id']):
                     if event_prop.get('answer_type', None):
@@ -69,6 +88,10 @@ def form(request, event_id):
                 if event_prop.get('answer_type', None):
                     prop['answer_type'] = event_prop['answer_type']
                 props.append(prop)
+
+        if not props:
+            messages.info(request, u'참가신청 입력폼을 준비 중입니다.')
+            return redirect('conference:index')
 
         props = sorted(props, key=lambda _p: int(_p['id']))
 

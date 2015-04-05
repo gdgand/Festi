@@ -1,0 +1,86 @@
+// transition 
+.transition(@transition) {
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+
+.transition(@transition, @transition) {
+    -webkit-transition: @transition, @transition;
+    transition: @transition, @transition;
+}
+
+.transition-webkit(@transition) {
+    -webkit-transition: -webkit-@transition;
+    transition: @transition;
+}
+.transition-webkit(@transition, @transition) {
+    -webkit-transition: -webkit-@transition, @transition;
+    transition: @transition, @transition;
+}
+
+// transform 
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    transform: @transform;
+}
+
+.transform(@transform, @transform) {
+    -webkit-transform: @transform, @transform;
+    -moz-transform: @transform, @transform;
+    -ms-transform: @transform, @transform;
+    transform: @transform, @transform;
+}
+
+.transform(@transform, @transform, @transform) {
+    -webkit-transform: @transform, @transform, @transform;
+    -moz-transform: @transform, @transform, @transform;
+    -ms-transform: @transform, @transform, @transform;
+    transform: @transform, @transform, @transform;
+}
+
+// user select 
+.user-select(@user-select) {
+    -webkit-user-select: @user-select;
+    -moz-user-select: @user-select;
+    -ms-user-select: @user-select;
+    user-select: @user-select;
+}
+
+// box-sizing 
+.box-sizing(@box-sizing) {
+     -moz-box-sizing: @box-sizing;
+    box-sizing: @box-sizing;
+}
+
+// backfacevisibility 
+.backface-visibility(@backface-visibility) {
+    -webkit-backface-visibility: @backface-visibility;
+     -ms-backface-visibility: @backface-visibility;
+    backface-visibility: @backface-visibility;
+}
+
+// animations 
+.animation-name(@animation-name) {
+    -webkit-animation-name: @animation-name;
+    animation-name: @animation-name;
+}
+.animation-name(@animation-name, @transition) {
+    -webkit-animation-name: @animation-name;
+    animation-name: @animation-name;
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+
+// box shadow 
+.box-shadow(@box-shadow) {
+     -moz-box-shadow: @box-shadow;
+     -webkitmoz-box-shadow: @box-shadow;
+    box-shadow: @box-shadow;
+}
+.box-shadow(@box-shadow, @box-shadow) {
+     -moz-box-shadow: @box-shadow, @box-shadow;
+    -webkitmoz-box-shadow: @box-shadow;
+    box-shadow: @box-shadow, @box-shadow;
+}

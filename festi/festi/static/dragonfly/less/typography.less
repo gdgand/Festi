@@ -1,0 +1,331 @@
+/*
+ * ===================================
+ * Typography
+ *
+ * includes: Headings, Body, Lists, Links
+ * ===================================
+ * */
+
+/*===    Headings    ===*/
+
+/*=== Header title ===*/
+.top-title {
+    text-align: center;
+    margin: 0;
+    text-transform: capitalize;
+    padding: 15px 0;
+    color: @white;
+    
+    &:after {
+        content: "";
+        display: block;
+        padding-top: 8px;
+        width: 80px;
+        margin: auto;
+        border-bottom: @border @white;
+    }
+}
+
+.sub-text {
+    color: @white;
+}
+
+/*=== Large title and subtitle ===*/
+
+.lg-title {
+    text-align: center;
+    position: relative;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #777;
+    font-size: 36px;
+    .lg-title-border::after {
+        content: "";
+        padding-bottom: 10px;
+        border-bottom: @border @light;
+        width: 80px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.sub-title {
+    text-align: center;
+    color: @grey;
+    font-size: 16px;
+    margin-top: -20px;
+    line-height: 24px;
+    padding-bottom: 30px;
+}
+
+/*=== Big title and subtitle ===*/
+
+@media (min-width: 768px) {
+    .big-title {
+        font-size: 40px;
+        color: @grey;
+    }
+    .big-subtitle {
+        font-size: 18px;
+        color: @light-grey;
+        margin: 20px auto 0;
+        font-weight: @font-weight-light;
+        line-height: 28px;
+        max-width: 85%;
+        letter-spacing: 0.25px;
+    }
+
+}
+@media (max-width: 768px) {
+    .big-title {
+        font-size: 30px;
+        color: @grey;
+    }
+    .big-subtitle {
+        font-size: 15px;
+        color: @grey;
+        margin: 15px auto 0;
+        line-height: 20px;
+    }
+
+}
+
+/*=== Medium title ===*/
+
+.md-title {
+    color: @dark-grey;
+    font-weight: @font-weight-normal;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+}
+.bg-filter-v2 .lg-title,
+.bg-filter-v2 .big-title,
+.bg-filter-v1 .lg-title,
+.bg-filter-v1 .big-title,
+.bg-filter .lg-title,
+.bg-filter .big-title {
+    color: @white;
+}
+/*=== Title with border ===*/
+
+.title-border {
+    padding-bottom: 5px;
+    border-bottom: @border @extra-light;
+}
+
+/*=== Text blocks ===*/
+
+.text-block {
+    font-size: 16px;
+    line-height: 25px;
+}
+.text-block-v1 {
+    font-size: 16px;
+    line-height: 1.8;
+}
+.text-block-v2 {
+    line-height: 22px;
+}
+.text-block,
+.text-block-v1,
+.text-block-v2 {
+    color: @grey;
+}
+
+/*===   Test Colors    ===*/
+
+.text-muted {
+    color: @grey !important;
+}
+.text-primary {
+    color: @primary !important;
+}
+a.text-primary:hover {
+    color: darken(@primary, 15%);
+}
+.text-success {
+    color: @success;
+}
+a.text-success:hover {
+    color: darken(@success, 15%);
+}
+.text-info {
+    color: @info;
+}
+a.text-info:hover {
+    color: darken(@info, 15%);
+}
+.text-warning {
+    color: @warning;
+}
+a.text-warning:hover {
+    color: darken(@warning, 15%);
+}
+.text-danger {
+    color: @danger;
+}
+a.text-danger:hover {
+    color: darken(@danger, 15%);
+}
+.bg-primary {
+    color: #ffffff !important;
+    background-color: @primary !important;
+}
+a.bg-primary:hover {
+    color: @white;
+    background-color: darken(@primary, 15%);
+}
+.bg-success {
+    color: #fff;
+    background-color: @success !important;
+}
+a.bg-success:hover {
+    background-color: darken(@success, 15%);
+}
+.bg-info {
+    color: #fff;
+    background-color: @info !important;
+}
+a.bg-info:hover {
+    background-color: darken(@info, 15%);
+}
+.bg-warning {
+    color: #fff;
+    background-color: @warning !important;
+}
+a.bg-warning:hover {
+    background-color: darken(@warning, 15%);
+}
+.bg-danger {
+    color: #fff;
+    background-color: @danger !important;
+}
+a.bg-danger:hover {
+    background-color: darken(@danger, 15%);
+}
+
+/* ===    Lists    === */
+
+/*=== Icons List ===*/
+
+.icons-list {
+    padding-left: 0;
+    list-style: none;
+    li {
+        display: inline-block;
+        margin-bottom: 5px;
+        padding-right: 2.5px;
+        margin-top: 5px;
+        padding-left: 2.5px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+    .hover-content .icons-list li {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/*=== Share icons list ===*/
+
+.share-icons-list {
+    padding-left: 0;
+    list-style: none;
+    li {
+        display: inline-block;
+        padding-right: 2.5px;
+        margin-bottom: 5px;
+    }
+}
+
+/*=== Features list with icons ===*/
+
+.features-list {
+    > li {
+        margin: 10px 0;
+        list-style: none;
+    }
+    i {
+        margin-right: 10px;
+        color: @primary;
+    }
+}
+
+/*=== Info list ===*/
+/* using in the portfolio item (down) */
+
+.info-list {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+    > li {
+        margin-bottom: 15px;
+        > i:before {
+        margin-right: 8px;
+     }
+    }
+    .md-list li {
+        margin-bottom: 10px;
+    }
+    .sm-list li {
+        margin-bottom: 5px;
+    }
+    .style {
+        padding-left: 40px;
+    }
+    .md-list li:last-child,
+    .sm-list li:last-child,
+     > li:last-child {
+        margin-bottom: 0;
+     }
+}
+.info-list-border > li {
+    border-bottom: @border @extra-light;
+    padding-bottom: 10px;
+}
+
+/*=== Inline Buttons ===*/
+
+.inline-btn > .btn {
+    margin-right: 15px;
+}
+
+/*=== Contact list with info ===*/
+
+.info-bar {
+    h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        color: @grey;
+        font-weight: @font-weight-bold;
+    }
+    > li {
+        margin-bottom: 15px;
+        color: @grey;
+    }
+    > li p {
+        margin-bottom: 0;
+    }
+}
+
+/* === Links === */
+a {
+     &:hover,
+     &:focus {
+        color: darken(@primary, 15%);
+        text-decoration: none;
+    }
+     &:focus {
+        outline: none;
+    }
+}
+/*=== Labels ===*/
+
+h3 > .label,
+h2 > .label,
+h1 > .label {
+    font-weight: @font-weight-light;
+}

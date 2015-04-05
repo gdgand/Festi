@@ -19,6 +19,7 @@ class SplitJSONWidget(forms.Widget):
 
         attrs = self.build_attrs(self.attrs, type='text', name='%s%s%s' % (name, self.separator, key))
         attrs['id'] = attrs.get('name', None)
+        attrs['class'] = 'form-control'
         if is_readonly:
             attrs['readonly'] = 'readonly'
             attrs['tabindex'] = '-1'
@@ -143,9 +144,6 @@ class SplitJSONWidget(forms.Widget):
                     return _to_parse_key(apx, v)
             else:
                 return v
-
-        print '---- raw_data ----'
-        print repr(raw_data)
 
         for k, v in raw_data.iteritems():
             if k in copy_raw_data:

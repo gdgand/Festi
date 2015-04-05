@@ -1,0 +1,63 @@
+// Name, Description, Version
+@import "info.less";
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Selecting text */
+::-moz-selection {
+    background: @dark;
+    color: @white;
+    text-shadow: none;
+}
+::selection {
+    background: @dark;
+    color: @white;
+    text-shadow: none;
+}
+
+// Mixins
+@import "../mixins/prefixes.less";
+@import "../mixins/hover-content.less";
+@import "../mixins/buttons.less";
+@import "../mixins/border-radius.less"; 
+
+// Variables
+@import "../variables.less";
+
+// Primary Colors
+@primary:        #1a99aa;
+@success:        #3c948b;
+@info:           #1eb9c1;
+@warning:        #ecd06f;
+@danger:         #df6c4f;
+
+// Central Media Queries
+@import "../media-queries.less";
+
+// Bootstrap Theme
+@import "bootstrap-theme.less";
+
+// Parts
+@import "../typography.less";
+@import "../forms.less";
+@import "../helper-classes.less";
+@import "../buttons.less";
+@import "../images.less";
+@import "../backgrounds.less";
+@import "../jumbotron.less";
+@import "../icons.less";
+@import "../content-boxes.less";
+@import "../thumbnails.less";
+@import "../navs.less";
+@import "../collapse.less";
+@import "../navbars.less";
+@import "../pagition.less";
+@import "../animations.less";
+@import "../style-switcher.less";
+@import "../small-components.less";
+@import "../sidebar.less";
+@import "../footer.less";
+@import "../prices.less";
+@import "../blog-page.less";

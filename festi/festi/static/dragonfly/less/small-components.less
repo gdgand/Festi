@@ -1,0 +1,253 @@
+/*
+ * ===================================
+ * Small Components
+ * 
+ * includes: 404 Page, Testimonial, Alerts, Clients, Knobs, Google Maps, Back To Top, Slideshow - Macbook Pro frame
+ * ===================================
+ * */
+
+/* === Grid Filter === */
+
+#Grid {
+    padding: 0;
+    margin: 0;
+    .mix {
+        opacity: 0;
+        display: none;
+    }
+    > li.mix {
+        padding: 10px !important;
+    }
+}
+.grid {
+    min-height: 750px;
+}
+
+/* Code */
+
+code {
+    padding: 2px 8px;
+    color: @dark;
+    background-color: @extra-light;
+    border-radius: 0;
+}
+/* === Slideshow - Macbook Pro frame === */
+
+@media (min-width: 992px) {
+    .slideshow {
+        width: 900px;
+        height: 350px;
+        background: url("@{base-url}macbook-pro-frame.png") 0 0 no-repeat;
+        margin: 0 auto;
+        .hover-content;
+        .transition(height 0.35s ease);
+        border-bottom: 1px solid #eee;
+    }
+    #slider-height:hover .slideshow {
+        height: 430px;
+    }
+}
+ul.thumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sy-pager li.sy-active a {
+    background-color: @primary;
+}
+/* === Back To Top === */
+
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    z-index: 998;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: @border-radius-round;
+    color: @primary;
+    font-size: 30px;
+    background: @white;
+    .box-shadow(0 1px 2px 1px rgba(0, 0, 0, 0.1));
+    .transition(all 0.5s ease-out);
+    &:hover {
+        color: @grey;
+    }
+    &:focus,
+    &:active {
+        color: @white;
+        background: @primary;
+    }
+}
+
+/* === Clients === */
+
+.client-logo {
+    text-align: center;
+    margin: 0 auto;
+    img {
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 100px;
+        padding: 20px 35px;
+        .transition(all 0.5s ease);
+        vertical-align: middle;
+    }
+}
+@media (max-width: 768px) {
+    .client-logo img {
+        display: block;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 768px) {
+    .client-logo img {
+        display: inline-block;
+        max-width: 25%;
+    }
+}
+
+/* === Knobs === */
+.knobs {
+    text-align: center;
+    div h3,
+    div h2 {
+        margin-top: -35px;
+        color: @grey;
+    }
+}
+#GreenKnobs,
+#YellowKnobs, 
+#RedKnobs, 
+#BlueKnobs {
+    display: none;
+}
+
+/* === Google Maps === */
+#map {
+    height: 450px;
+    width: 100%;
+}
+
+/* === Alerts === */
+
+.alert a {
+    color: @white;
+    text-decoration: underline;
+}
+.alert .text-success,
+.alert .text-primary,
+.alert .text-warning,
+.alert .text-danger,
+.alert .text-info {
+    color: @white;
+}
+.alert .close {
+    opacity: 0.9;
+    color: @white;
+    text-shadow: none;
+}
+.alert .close:hover {
+    opacity: 1;
+}
+/* For Contact Form - Success / Error */
+.success {
+    background-color: fade(@success, 90%);
+}
+.error {
+    background-color: fade(@danger, 90%);
+}
+.error,
+.success {
+    padding: 1em;
+    margin-bottom: 0.75rem;
+    color: @white;
+    border-radius: @border-radius;
+}
+
+/* === Testimonial === */
+
+.testimonial {
+    text-align: center;
+    color: @white;
+    p {
+        font-size: 24px;
+        margin: 0;
+        font-weight: @font-weight-light;
+    }
+}
+
+/* === Error 404 Page === */
+
+.error404 {
+    text-align: center;
+    span {
+        font-size: 250px;
+        z-index: 0;
+        line-height: 100px;
+        vertical-align: middle;
+        position: relative;
+    }
+}
+.error-oh {
+    display: inline-block;
+    background: fade(@primary, 70%);
+    border-radius: 50%;
+    border-top-right-radius: 0;
+    color: @white;
+    font-size: 90px;
+    height: 170px;
+    font-style: italic;
+    width: 170px;
+    line-height: 170px;
+    margin: 0 -28px;
+    z-index: 2;
+    vertical-align: middle;
+    position: relative;
+    top: 10px;
+}
+.error404-title {
+    text-align: center;
+    margin: 0;
+    color: @white;
+}
+@media (min-width: 480px) {
+    .error-oh {
+        font-size: 90px;
+        height: 170px;
+        width: 170px;
+        line-height: 170px;
+        span {
+            font-size: 250px;
+            line-height: 100px;
+        }
+    }
+    .section-404 {
+        padding: 100px 0;
+    }
+    .error404 {
+        margin-bottom: 60px;
+    }
+}
+@media (max-width: 480px) {
+    .error-oh {
+        font-size: 50px;
+        height: 100px;
+        width: 100px;
+        line-height: 100px;
+        span {
+            font-size: 150px;
+            line-height: 100px;
+        }
+    }
+    .section-404 {
+        padding: 30px 0;
+    }
+    .error404 {
+        margin-bottom: 30px;
+    }
+}

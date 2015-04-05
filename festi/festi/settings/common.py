@@ -96,6 +96,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -106,6 +111,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v2.2',
     }
 }
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = ROOT('staticfiles')

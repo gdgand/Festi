@@ -1,0 +1,97 @@
+/*
+ * ===================================
+ * Sidebar
+ * ===================================
+ * */
+
+.sidebar-off,
+.sidebar-on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: @white;
+    color: @grey;
+    .transition(all 0.5s ease);
+    width: 280px;
+    z-index: 10000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+.sidebar-off {
+    .transform(translate(-100%, 0%));
+}
+.sidebar-on {
+    .transform(translate(0%, 0%));
+}
+.sidebar {
+    .wrap {
+        .hover-content;
+        padding: 20px;
+        cursor: pointer;
+    }
+    .title {
+        margin: 0;
+        color: @light-grey;
+        font-size: 28px;
+        float: left;
+    }
+     h4 {
+        text-transform: @text-up;
+        color: @primary;
+    }
+    .circle-icons i {
+        color: @grey;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        font-size: 15px;
+    }
+}
+
+/* Close icon */
+
+.close-icon {
+    position: relative;
+    height: 28px;
+    width: auto;
+    float: right;
+    right: 15px;
+    cursor: pointer;
+}
+.close-b,
+.close-a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: @light-grey;
+}
+.close-a {
+    .transform(rotate(45deg));
+}
+.close-b {
+    .transform(rotate(-45deg));
+}
+
+/* languages*/
+.lang {
+    a {
+        color: @grey;
+    }
+    .fa-check {
+        display: none;
+        opacity: 0;
+        .transition(opacity 0.15s ease);
+    }
+    li.active .fa-check,
+    li:hover .fa-check {
+        opacity: 1;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 90%;
+        margin-left: 5px;
+    }
+}

@@ -1,0 +1,92 @@
+/*
+ * ===================================
+ *  Pricing Tables 
+ * 
+ * includes: 3 types of pricing tables
+ * ===================================
+ * */
+
+.first,
+.last,
+.middle {
+    position: relative;
+}
+.last,
+.first {
+    z-index: 1;
+}
+.middle {
+    z-index: 2;
+}
+
+/* Pricing tables - version 1 */
+
+.panel.prices-v1,
+.panel.prices {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.prices-v1 .panel-body,
+.prices .panel-body {
+    padding: 25px;
+}
+.ribbon {
+    background: @white;
+    color: @primary;
+    position: absolute;
+    top: 25px;
+    left: -28px;
+    .transform(rotate(-45deg));
+    line-height: 24px;
+    height: 25px;
+    z-index: 3;
+    width: 130px;
+}
+.val {
+    color: @primary;
+    font-size: 50px;
+    margin: 20px 0;
+}
+.bg-primary .val small,
+.bg-primary .val {
+    color: @white;
+}
+
+/* Pricing tables - version 2 */
+
+.prices-v1 .name {
+    margin: 5px 0;
+    font-size: 40px;
+}
+.val-v1 {
+    color: @primary;
+    font-size: 45px;
+    margin: 10px 0 25px;
+}
+
+/* Pricing Tables - Minimalistic Style */
+
+.type {
+    font-size: 2em;
+    color: @grey;
+    margin: 15px 0 30px;
+}
+.price {
+    font-size: 6em;
+    line-height: 100px;
+    margin: 20px 0 0;
+}
+.month {
+    color: @grey;
+    text-transform: @text-up;
+    font-weight: @font-weight-light;
+}
+.details {
+    font-size: 1.5em;
+    margin: 25px 0 10px;
+}

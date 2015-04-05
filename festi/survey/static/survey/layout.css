@@ -1,0 +1,15 @@
+body {
+    background-image: url("/static/survey/bg.jpg");
+}
+
+.info-list li {
+    margin-bottom: 0px;
+}
+
+.bg-header {
+    background-image: url("/static/survey/bg-header.jpg");
+}
+
+.bg-tiles {
+    background-image: url("/static/survey/bg-tiles.jpg");
+}

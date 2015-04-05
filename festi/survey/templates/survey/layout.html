@@ -1,24 +1,163 @@
 <!doctype html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta id="viewport" name="viewport"
-      content="width=320, initial-scale=1, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scalable=no;"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/dist/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap-material-design/dist/css/material.min.css"/>
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}festi/bootstrap.css"/>
-<script src="{{ STATIC_URL }}react/react-with-addons.js"></script>
-<script src="{{ STATIC_URL }}flux/dist/Flux.js"></script>
-<script src="{{ STATIC_URL }}react/JSXTransformer.js"></script>
-<script src="{{ STATIC_URL }}eventEmitter/EventEmitter.js"></script>
-<script src="{{ STATIC_URL }}js/constants/FestiConstants.js"></script>
-<script src="{{ STATIC_URL }}js/dispatchers/Dispatcher.js"></script>
-<script src="{{ STATIC_URL }}js/dispatchers/AppDispatcher.js"></script>
-<script src="{{ STATIC_URL }}js/stores/FestiStores.js"></script>
-<script src="{{ STATIC_URL }}js/actions/FestiActions.js"></script>
-{% block react %}{% endblock %}
-<title>{% block title %}survey{% endblock %}</title>
+<meta charset="utf-8" />
+<title>{% block title %}GDG Korea Android{% endblock %}</title>
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scalable=no;" />
+<meta name="description" content="{{ event.name }}" />
+<meta name="keywords" content="{{ event.name }}" />
+<meta name="author" content="GDG Korea Android" />
+<link href="{{ STATIC_URL }}dragonfly/css/bootstrap.min.css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}dragonfly/css/themes/green.css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}dragonfly/css/slippry.min.css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}dragonfly/plugins/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}dragonfly/plugins/animate.css-master/animate.min.css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}survey/layout.css" rel="stylesheet" />
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
+{% block extra_head %}{% endblock %}
 </head>
 <body>
+
+{% block header %}
+<nav class="navbar navbar-trn navbar-fixed-top" role="navigation" id="navbarSettings">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "conference:index" %}">GDG Korea Android</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav pull-right">
+                <!--
+                <li><a href="javascript:void(0);">발표자</a>
+                <li><a href="javascript:void(0);">MAP</a>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "account_logout" %}">로그아웃</a></li>
+                {% endif %}
+                -->
+            </ul>
+
+            <!--
+            <form id="search_form" method="GET" action="" class="navbar-search pull-left">
+                <input type="text" name="q" value="{{ q }}" class="search-query span2" placeholder="검색" />
+            </form>
+            -->
+
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div id="navbarSpaceBottom"></div>
+{% endblock %}
+
+{% comment %}
+{% if messages %}
+<div class="container">
+    <div class="row">
+        {% for message in messages %}
+        <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endcomment %}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-xs-12">
+                    <h4>공식 후원사</h4>
+                    <ul class="info-list md-list i-primary">
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i>
+                            <a>구글 코리아</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-sm visible-sm visible-xs"></div>
+
+                <div class="col-md-4 col-lg-4 col-xs-12">
+                    <h4>수고해주신 분들</h4>
+                    <ul class="info-list md-list i-primary">
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 김용욱
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 김태호
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 김기완
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 이진석
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 임원균
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right fa-fw"></i> 김나연
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-sm visible-sm visible-xs"></div>
+                <div class="col-md-4 col-lg-4  col-xs-12">
+                    <!--
+                    <h4>About Us</h4>
+                    <p>Temporibus autem quibusdam et aut officiis debitis ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                    <div class="space-sm"></div>
+                    -->
+                    <h4>커뮤니티</h4>
+                    <ul class="circle-icons icons-list">
+                        <li>
+                            <a href="https://plus.google.com/communities/100903743067544956282" title="GDG 코리아 안드로이드">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>파이썬 웹 프레임워크 <a href='https://www.djangoproject.com/'>Django</a> 로 만들었습니다.</p>
+        </div>
+    </div>
+
+    <!--Back to top-->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</footer>
+{% endblock %}
+
+<script src="{{ STATIC_URL }}dragonfly/js/min/modernizr.custom.min.js"></script>
+<script src="{{ STATIC_URL }}jquery/dist/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ STATIC_URL }}bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/wow/0.1.6/wow.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.knob/1.2.9/jquery.knob.min.js"></script>
+<script src="{{ STATIC_URL }}dragonfly/js/min/slippry.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mixitup/1.5.6/jquery.mixitup.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.sticky/1.0.0/jquery.sticky.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.nicescroll/3.5.4/jquery.nicescroll.min.js"></script>
+<script src="{{ STATIC_URL }}dragonfly/js/min/contact-form.min.js"></script>
+<script src="{{ STATIC_URL }}dragonfly/js/min/scripts.min.js"></script>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+{% block extra_script %}{% endblock %}
+
 </body>
 </html>

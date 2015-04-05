@@ -1,0 +1,342 @@
+/*
+ * ===================================
+ * Navs
+ * 
+ * includes: Large tabs with icon, Full Width tabs, Inline Tabs, Filter Tabs, Filter Menu
+ * ===================================
+ * */
+
+/*  Large tab with icon (you can see it on the page Services III) */
+
+.lg-tabs {
+    margin: auto;
+    text-align: center;
+    padding: 0;
+    list-style: none;
+    li {
+        background: @white;
+        position: relative;
+        min-height: 1px;
+        float: left;
+        a:hover,
+        &.active a {
+            color: @primary;
+        }
+    }
+    a {
+        color: @grey;
+        background: @white;
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .lg-tabs {
+        li {
+            min-width: 25%;
+            padding: 25px 15px;
+            &:not(:last-child) {
+                border-right: @border @extra-light;
+            }
+        }
+        a {
+            .transition(color .35s ease);
+        }
+        i {
+            font-size: 50px;
+        }
+        h3 {
+            margin: 15px 0 0;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .lg-tabs li {
+        padding: 25px 10px;
+    }
+}
+@media (max-width: 992px) {
+    .lg-tabs {
+        li {
+            width: 50%;
+            &:not(:last-child):not(:nth-child(3)) {
+                border-bottom: @border @extra-light;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .lg-tabs {
+        li {
+            width: 100%;
+            padding: 15px 5px;
+            &:not(:last-child) {
+                border-bottom: @border @extra-light;
+            }
+        }
+        i {
+            font-size: 24px;
+            float: left;
+            line-height: 30px;
+            width: 50px;
+        }
+        h3 {
+            text-align: left;
+            margin: 0;
+            line-height: 30px;
+            font-size: 24px;
+            overflow: hidden;
+        }
+    }
+}
+
+/* Full Width tabs - fw-tabs */
+
+.fw-tabs {
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    max-width: 100%;
+    text-align: center;
+    > li {
+        list-style: none;
+        position: relative;
+        overflow: hidden;
+        text-align: left;
+        padding: 0;
+        &:last-child {
+            padding-right: 0;
+        }
+        > a {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            border: @border @extra-light;
+            color: @dark;
+            font-size: 19px;
+            text-transform: @text-up;
+            letter-spacing: @letter-space-lg;
+            font-weight: @font-weight-light;
+            .transition(all 0.5s ease);
+        }
+        &.active .blue-i {
+            background: @white;
+            color: @primary;
+            box-shadow: 0 0 0 1px @light;
+        }
+        span {
+            position: relative;
+            margin-left: 10px;
+            vertical-align: super;
+        }
+    }
+}
+@media (min-width: 992px) {
+    .fw-tabs > li {
+        display: inline-block;
+        margin-bottom: 0;
+        margin-right: -1px;
+    }
+}
+@media (max-width: 992px) {
+    .fw-tabs > li {
+        margin-right: 0;
+        display: block;
+        &:not(:last-child) {
+            margin-bottom: -1px;
+        }
+    }
+}
+/* Simple Inline Tabs */
+
+.inline-tabs {
+    text-align: center;
+    margin: 30px auto 50px;
+    padding: 0;
+    > li {
+        position: relative;
+        z-index: 1;
+        border: @border @light;
+        text-align: center;
+        font-size: 16px;
+        .transition(background 0.15s);
+        padding: 15px 30px;
+        a {
+            color: @light-grey;
+            &:hover {
+                color: @primary;
+            }
+            i {
+                margin-right: 8px;
+            }
+        }
+        &.active {
+            z-index: 2;
+            background-color: @primary;
+            color: @white;
+            border-color: @primary;
+            a,
+            a:hover {
+                color: @white;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .inline-tabs > li {
+        display: block;
+        margin-bottom: -1px;
+        &:first-child {
+            .border-radius-top(2px);
+        }
+        &:last-child {
+            .border-radius-bottom(2px);
+        }
+    }
+}
+@media (min-width: 768px) {
+    .inline-tabs > li {
+        display: inline-block;
+        margin-right: -4px;
+        &:first-child {
+            .border-radius-left(2px);
+        }
+        &:last-child {
+            .border-radius-right(2px);
+        }
+    }
+}
+/*   Filter Inline Menu - version 2    */
+
+.filter-tabs {
+    text-align: center;
+    margin: 15px 0 30px 0;
+    padding: 0;
+    li {
+        padding: 15px 20px;
+        color: @grey;
+        border-radius: @border-radius;
+        cursor: pointer;
+        border: @border @extra-light;
+        list-style: none;
+        .hover-content;
+        letter-spacing: @letter-space-lg;
+        text-transform: @text-cap;
+        &.active {
+            background-color: @primary;
+            color: @white;
+            &:hover {
+                color: @white;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .filter-tabs li {
+        display: inline-block;
+        margin: 0 7px 0 0;
+        .transition(all 0.35s ease);
+        &:hover {
+            color: @primary;
+            border-color: @light;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .filter-tabs li {
+        display: block;
+        margin: 0 5px 5px 0;
+        &:hover {
+            background: @grey;
+            color: @white;
+        }
+        &.active:hover {
+            background: @primary;
+            color: @white;
+        }
+    }
+}
+/* If .bg-grey then background is white */
+
+.bg-grey-3 .filter-tabs li,
+.bg-grey-2 .filter-tabs li,
+.bg-grey-1 .filter-tabs li,
+.bg-grey .filter-tabs li {
+    background: @white;
+    border: none;
+    &.active {
+        background-color: @primary;
+        color: @white;
+        &:hover {
+            color: @white;
+        }
+    }
+}
+/*	Filter Menu (using on the page - Portfolio Filter II)	*/
+
+.filter-menu {
+    text-align: center;
+    clear: both;
+    position: relative;
+    background: @trn;
+    margin: 15px 0 30px 0;
+    width: 100%;
+    padding: 0;
+    li {
+        z-index: 2;
+        color: @grey;
+        font-size: 17px;
+        cursor: pointer;
+        text-transform: @text-cap;
+    }
+}
+@media (min-width: 768px) {
+    .filter-menu {
+        border-bottom: 2px solid @light;
+        z-index: 1;
+        li {
+            padding: 10px 25px;
+            border-bottom: 2px solid @light;
+            margin-bottom: -2px;
+            display: inline-block;
+            font-weight: @font-weight-light;
+            .transition(all 0.35s ease);
+            &.active {
+                color: @grey;
+                border-bottom: 2px solid @primary;
+                &:hover {
+                    color: @dark;
+                    border-bottom: 2px solid @primary;
+                }
+            }
+            &:hover {
+                color: @primary;
+                border-bottom: 2px solid #aaa;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .filter-menu li {
+        padding: 15px 25px;
+        border: @border @light;
+        margin-bottom: -1px;
+        display: block;
+        font-weight: @font-weight-normal;
+        &:hover {
+            color: @white;
+            background: @grey;
+            border-color: @grey;
+        }
+        &.active:hover,
+        &.active {
+            color: @white;
+            background: @primary;
+            border-color: @primary;
+        }
+        &:last-child {
+            margin-bottom: -2px;
+        }
+    }
+}

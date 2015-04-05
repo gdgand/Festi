@@ -1,0 +1,203 @@
+/*
+ * ===================================
+ * Animations
+ * 
+ * includes: easeUp, easePulse, fromPocket, pulseIn, openIn, openSection, swithOnTv
+ * ===================================
+ * */
+
+/* Animations are allowed only for more than 768px - no mobile devices for better performance */
+
+@media (min-width: 768px) {
+    
+    /* slide from pocket */
+    @name1: fromPocket;
+    @-webkit-keyframes @name1   {
+        0% {
+            opacity: 0;
+            .transform(perspective(1000px) rotateY(350deg) translate3d(25%, 0%, -100px));
+        }
+        100% {
+            opacity: 1;
+            .transform(perspective(1000px) rotateY(360deg) translate3d(0%, 0%, 0px));
+        }
+    }
+    @keyframes @name1 {
+        0% {
+            opacity: 0;
+            .transform(perspective(1000px) rotateY(350deg) translate3d(25%, 0%, -100px));
+        }
+        100% {
+            opacity: 1;
+            .transform(perspective(1000px) rotateY(360deg) translate3d(0%, 0%, 0px));
+        }
+    }
+    .fromPocket {
+        .animation-name(@name1);
+    }
+    
+    /* pulseIn */
+    @name2: pulseIn;
+    @-webkit-keyframes @name2 {
+        0% {
+            opacity: 0;
+            .transform(scale(0));
+        }
+        50% {
+            opacity: 0.25;
+            .transform(scale(1.2));
+        }
+        100% {
+            opacity: 1;
+            .transform(scale(1));
+        }
+    }
+    @keyframes pulseIn {
+        0% {
+            opacity: 0;
+            .transform(scale(0));
+        }
+        50% {
+            opacity: 0.25;
+            .transform(scale(1.2));
+        }
+        100% {
+            opacity: 1;
+            .transform(scale(1));
+        }
+    }
+    .pulseIn {
+        .animation-name(@name2);
+    }
+    
+    /* easePulse */
+    @name3: easePulse;
+    @-webkit-keyframes  @name3 {
+        0% {
+            opacity: 0;
+            .transform(scale(0));
+        }
+        100% {
+            opacity: 1;
+            .transform(scale(1));
+        }
+    }
+    @keyframes  @name3 {
+        0% {
+            opacity: 0;
+            .transform(scale(0));
+        }
+        100% {
+            opacity: 1;
+            .transform(scale(1));
+        }
+    }
+    .easePulse {
+        .animation-name(@name3);
+    }
+    /* openIn */
+    @name4: openIn;
+    @-webkit-keyframes @name4 {
+        0% {
+            opacity: 0;
+            .transform(perspective(500px) rotateY(15deg));
+        }
+        100% {
+            opacity: 1;
+            .transform(perspective(500px) rotateY(0));
+        }
+    }
+    @keyframes @name4 {
+        0% {
+            opacity: 0;
+            .transform(perspective(500px) rotateY(15deg));
+        }
+        100% {
+            opacity: 1;
+            .transform(perspective(500px) rotateY(0));
+        }
+    }
+    .openIn {
+        .animation-name(@name4);
+    }
+        
+    /* easeUp */
+    @name5: easeUp;
+    @-webkit-keyframes @name5 {
+        0% {
+            opacity: 0;
+            .transform(translate(0%, 35px));
+        }
+        100% {
+            opacity: 1;
+            .transform(translate(0%, 0px));
+        }
+    }
+    @keyframes @name5 {
+        0% {
+            opacity: 0;
+            .transform(translate(0%, 35px));
+        }
+        100% {
+            opacity: 1;
+            .transform(translate(0%, 0px));
+        }
+    }
+    .easeUp {
+       .animation-name(@name5);
+    }
+    
+    
+    /* openSection */
+    @name6: openSection;
+    @-webkit-keyframes @name6 {
+        0% {
+            height: 0;
+            padding: 0;
+        }
+        100% {
+            height: auto;
+        }
+    }
+    @keyframes @name6 {
+        0% {
+            height: 0;
+            padding: 0;
+        }
+        100% {
+            height: auto;
+        }
+    }
+    .openSection {
+        @transition-name6: height 1s ease !important;
+        .animation-name(@name6, @transition-name6);
+    }
+    
+    /* swithOnTv */
+    @name7: swithOnTv;
+    @-webkit-keyframes @name7 {
+        0% {
+            .transform(scale3d(0, 0.01, 1));
+        }
+        50% {
+            .transform(scale3d(0.75, 0.01, 1));
+        }
+        100% {
+            .transform(scale3d(1, 1, 1));
+        }
+    }
+    @keyframes @name7 {
+        0% {
+            .transform(scale3d(0, 0.01, 1));
+        }
+        50% {
+            .transform(scale3d(0.75, 0.01, 1));
+        }
+        100% {
+            .transform(scale3d(1, 1, 1));
+        }
+    }
+    .swithOnTv {
+        .animation-name(@name7);
+    }
+}

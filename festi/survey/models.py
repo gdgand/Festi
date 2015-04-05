@@ -1,8 +1,21 @@
 # coding: utf8
+import os
+import random
 from django.db import models
-from jsonfield import JSONField
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.utils.encoding import force_unicode, smart_str
+from jsonfield import JSONField
+
+
+def random_name(instance, filename):
+    cls_name = instance.__class__.__name__.lower()
+    dirpath_format = cls_name + '/%Y/%m/%d/%H%M'
+    dirpath = os.path.normpath(force_unicode(timezone.now().strftime(smart_str(dirpath_format))))
+    random_name = ''.join(random.sample('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + '0123456789', 10))
+    extension = os.path.splitext(filename)[-1]
+    return dirpath + '_' + random_name + extension
 
 
 class Base(models.Model):
@@ -13,24 +26,8 @@ class Base(models.Model):
         abstract = True
 
 
-'''
-class User(Base):
-    AUTH_TYPES = (('facebook', 'facebook'),)
-    auth_type = models.CharField(max_length=10, choices=AUTH_TYPES, default='facebook', db_index=True)
-    uid = models.CharField(max_length=20, db_index=True)
-    name = models.CharField(max_length=100, db_index=True)
-    profile_image_url = models.URLField(blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
-
-    class Meta:
-        unique_together = (('auth_type', 'uid'),)
-
-    def __unicode__(self):
-        return self.email
-'''
-
-
 class Event(Base):
+    slug = models.SlugField(unique=True)
     name = models.CharField(max_length=100, db_index=True)
     props = JSONField(verbose_name='Questions', blank=True)
     begin = models.DateTimeField()
@@ -49,6 +46,20 @@ class Event(Base):
             'begin': self.begin,
             'end': self.end,
         }
+
+
+class Speaker(models.Model):
+    event = models.ForeignKey(Event)
+    idx = models.IntegerField(default=0)
+    name = models.CharField(max_length=100)
+    profile = models.CharField(max_length=100, blank=True)
+    profile_image = models.ImageField(upload_to=random_name)
+    keyword = models.CharField(max_length=20, blank=True)
+    topic = models.CharField(max_length=100, blank=True)
+    detail = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ('idx', 'id')
 
 
 class Survey(Base):

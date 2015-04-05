@@ -1,0 +1,260 @@
+/*
+ * ===================================
+ * Helper Classes
+ * 
+ * includes: spaces, hr, section, filling-section, small container
+ * ===================================
+ * */
+
+/*=== Spaces - smart tags for fast indentation ===*/
+
+.space,
+.space-sm,
+.space-md,
+.space-lg {
+    display: block;
+    float: none;
+    clear: both;
+}
+.space-sm {
+    padding-top: 15px;
+}
+.space-md {
+    padding-top: 20px;
+}
+.space {
+    padding-top: 30px;
+}
+.space-lg {
+    padding-top: 50px;
+}
+/*=== Large line - <hr class="hr"> ===*/
+
+.hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+/* === Colors === ===*/
+
+.primary span {
+    color: @primary;
+}
+.success span {
+    color: @success;
+}
+.info span {
+    color: @info;
+}
+.warning span {
+    color: @warning;
+}
+.danger span {
+    color: @danger;
+}
+ul.default span,
+ul.danger span,
+ul.warning span,
+ul.info span,
+ul.success span,
+ul.primary span {
+    margin-right: 5px;
+}
+
+/* === Text Colors === (text-primary and etc. you will find in the bootstrap.css) ===*/
+
+.text-white a,
+.text-white {
+    color: @white !important;
+}
+.text-light a,
+.text-light {
+    color: @light !important;
+}
+
+/*=== Section - make your site clearly with these classes ===*/
+
+@media (min-width: 768px) {
+    .section-sm {
+        padding: 20px 0;
+    }
+    .section-md {
+        padding: 30px 0;
+    }
+    .section {
+        padding: 50px 0;
+    }
+    .section-lg {
+        padding: 80px 0;
+    }
+}
+@media (max-width: 768px) {
+    .section-sm {
+        padding: 15px 0;
+    }
+    .section-md {
+        padding: 20px 0;
+    }
+    .section {
+        padding: 30px 0;
+    }
+    .section-lg {
+        padding: 50px 0;
+    }
+}
+.container-fluid.section,
+.container-fluid.section-md,
+.container-fluid.section-sm,
+.container-fluid.section-lg,
+.container.section,
+.container.section-sm,
+.container.section-md,
+.container.section-lg {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*=== Section with absolute postiion - using on the Sign In/Up Pages ===*/
+
+.section-fxd {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+/*=== seciton with no top padding ===*/
+
+.noTop.section-lg,
+.noTop.section-md,
+.noTop.section-sm,
+.noTop.section {
+    padding-top: 0;
+}
+.section-sm,
+.section-md,
+.section-lg,
+.section {
+    position: relative;
+}
+
+/*=== Section for background image or video ===*/
+
+.filling-section {
+    min-height: 350px;
+    position: relative;
+}
+
+/*=== Small container ===*/
+ 
+.container-sm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*=== Block center - horizontal and vertical ===*/
+
+.h-center,
+.v-center {
+    position: absolute;
+    top: 50%;
+}
+.v-center {
+    .transform(translate(0, -50%));
+}
+.h-center {
+    left: 50%;
+    .transform(translate(-50%, -50%));
+    width: 100%;
+}
+
+/*=== vertical and horizontal center  ===*/
+.hv-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    .transform(translate(-50%, -50%));
+}
+
+/*=== max width center, center block ===*/
+
+.img-mw450 {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+/*=== max width 450px ===*/
+
+.w450 {
+    max-width: 450px;
+    width: 100%;
+}
+.w800,
+.w450 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+/*=== max height 450px ===*/
+
+.h450 {
+    max-height: 450px;
+}
+
+/*=== max width 800px ===*/
+
+.w800 {
+    max-width: 800px;
+    width: 100%;
+}
+
+/*=== Margins ===*/
+
+.m-no-all {
+    margin: 0;
+}
+.m-no-bottom {
+    margin-bottom: 0;
+}
+.m-no-top {
+    margin-top: 0;
+}
+.m-no-left {
+    margin-left: 0;
+}
+.m-no-right {
+    margin-right: 0;
+}
+.m-10-top {
+    margin-top: 10px;
+}
+
+/*=== Paddings ===*/
+
+.p-no-all {
+    padding: 0;
+}
+.p-no-bottom {
+    padding-bottom: 0;
+}
+.p-no-top {
+    padding-top: 0;
+}
+.p-no-left {
+    padding-left: 0;
+}
+.p-no-right {
+    padding-right: 0;
+}
+
+/*=== center block fix ===*/
+
+.input-group.center-block {
+    display: inline-table;
+}
