@@ -28,8 +28,6 @@
 <div class="navbar navbar-header navbar-fixed-top navbar-default navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
         <a class="navbar-brand" href="{% url "conference:index" %}">Android Conference</a>
-        <li><a href="{% url "conference:about" %}">About</a></li>
-        <li><a href="{% url "conference:speaker" %}">Speaker</a></li>
         {% if event %}
             <li><a href="{% url "survey:form" event.id %}">Survey</a></li>
         {% endif %}

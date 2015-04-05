@@ -173,13 +173,14 @@ header {
     text-align: center;
     color: #8dc63f;
     background-attachment: scroll;
-    background-image: url(../img/header-bg.jpg);
+    background-image: url(../img/header-bg.png);
     background-position: center center;
     background-repeat: repeat;
+    background-size: 200px auto;
     opacity: 0.8;
-    -webkit-background-size: cover;
+    /*-webkit-background-size: cover;*/
     -moz-background-size: cover;
-    background-size: cover;
+    /*background-size: cover;*/
     -o-background-size: cover;
 }
 
@@ -771,6 +772,37 @@ img::-moz-selection {
     background: 0 0;
 }
 
+.service-image {
+    text-align: center;
+    color: #8dc63f;
+    background-attachment: scroll;
+    /*background-image: url(../img/hackathon.png);*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.ganzi-image {
+    min-height: 552px;
+    text-align: center;
+    color: #8dc63f;
+    background-attachment: scroll;
+    background-image: url(../img/hackathon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 body {
     webkit-tap-highlight-color: #fed136;
 }
+
+
