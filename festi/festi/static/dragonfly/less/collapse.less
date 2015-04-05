@@ -1,0 +1,42 @@
+/*
+ * ===================================
+ * Collapse
+ * 
+ * includes: accordion (using on the Support page)
+ * ===================================
+ * */
+
+.panel-group {
+    .panel {
+        &:first-child .panel-heading {
+            .border-radius-top(2px);
+        }
+        &:last-child .panel-heading {
+            .border-radius-bottom(2px);
+        }
+    }
+    .panel-heading {
+        border-radius: 0;
+        padding: 25px;
+        .transition(background 0.35s ease-out);
+        &:hover {
+            background-color: @grey-4;
+        }
+    }
+    a {
+        .panel-heading {
+            border-bottom: @border @extra-light;
+            margin-bottom: -1px;
+        }
+        .panel-title,
+        .panel-heading {
+            color: @grey;
+            font-size: 24px;
+            line-height: 1.1;
+        }
+    }
+    .panel-title > i {
+        color: @primary;
+        margin-right: 10px;
+    }
+}

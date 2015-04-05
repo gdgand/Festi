@@ -1,0 +1,356 @@
+/*
+ * ===================================
+ * Icons
+ * 
+ * includes: Circle icons, Square icons, Colors of Icons
+ * ===================================
+ * */
+
+/* Basic Colors of icons */
+
+.i-primary i {
+    color: @primary;
+}
+.i-success i {
+    color: @success;
+}
+.i-danger i {
+    color: @danger;
+}
+.i-info i {
+    color: @info;
+}
+.i-warning i {
+    color: @warning;
+}
+
+/* Small Circle Icons - social, share */
+
+.circle-icons {
+    i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        color: @primary;
+        font-size: 15px !important;
+        background: @white;
+        background: fade(#fff, 90%);
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+        .transition(all 0.5s ease-out);
+    }
+    li:hover i {
+        background: @primary;
+        color: @white;
+    }
+}
+
+.trn.circle-icons {
+    i {
+        color: @white;
+        box-shadow: 0 0 0 1px @white;
+        background: @trn;
+    }
+    li:hover i {
+        background: @white;
+        background: fade(#fff, 25%);
+    }
+}
+
+/* Square Icons */
+
+.square-icons {
+    i {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: @grey;
+        font-size: 16px;
+        background: @grey-6;
+        .transition(all 0.5s ease-out);
+    }
+    i:hover {
+        color: @white;
+        background: @primary;
+    }
+}
+.white .square-icons {
+    i {
+        background: @white;
+    }
+    i:hover {
+        color: @white;
+    }
+}
+
+h1 i:before,
+h2 i:before,
+h3 i:before,
+h4 i:before,
+h5 i:before,
+button > i:before,
+.btn > i:before {
+    margin-right: 5px;
+}
+.fa-long-arrow-right:before {
+    margin-left: 5px;
+}
+
+/* Button only with icon */
+
+i.only-i:before,
+.only-i i:before {
+    margin-right: 0;
+}
+
+/*
+ * ===================================
+ * Icons Effects
+ * 
+ * includes: hovicon and few beautiful animations
+ * ===================================
+ * */
+
+.hovicon {
+    display: inline-block;
+    font-size: 45px !important;
+    line-height: 90px;
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+    margin: 15px;
+    &.auto-width {
+        width: auto;
+        height: auto;
+        padding: 15px;
+    }
+    &:after {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        content: '';
+        .box-sizing(content-box);
+    }
+    &:before {
+        speak: none;
+        font-size: 48px !important;
+        line-height: 90px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        display: block;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+/* Effect 1 */
+
+.hovicon.effect-1 {
+    background: @grey-7;
+    .transition(background 0.2s, color 0.2s);
+    &:after {
+        top: -7px;
+        left: -7px;
+        padding: 7px;
+        box-shadow: 0 0 0 4px @grey-1;
+        .transition-webkit(transform 0.2s, opacity 0.2s);
+        .transform(scale(.8));
+        opacity: 0;
+    }
+}
+
+/* Effect 1a */
+
+.float-box:hover .hovicon.effect-1.sub-a,
+.hovicon.effect-1.sub-a:hover {
+    background: @grey-7;
+    color: @darken-grey;
+    i {
+        color: @darken-grey;
+    }
+    &:after {
+        .transform(scale(1));
+        opacity: 1;
+    }
+}
+
+/* Effect 3 */
+
+.hovicon.effect-3 {
+    box-shadow: 0 0 0 4px @extra-light;
+    .transition( color 0.3s);
+    &:after {
+        top: -2px;
+        left: -2px;
+        padding: 2px;
+        z-index: -1;
+        background: @primary;
+        .transition-webkit(transform 0.2s, opacity 0.3s);
+    }
+}
+
+/* Effect 3b */
+
+.hovicon.effect-3.sub-b {
+    color: @primary;
+    i {
+    color: @primary;
+    }
+    &:after {
+        .transform(scale(1.3));
+        opacity: 0;
+    }
+    &:hover,
+    &:hover i {
+        color: @white;
+    }
+    &:hover:after {
+        .transform(scale(1));
+        opacity: 1;
+    }
+}
+
+/*
+ * ===================================
+ * Icons Cover
+ * 
+ * includes: blue icon, circle border icon
+ * ===================================
+ * */
+
+/* blue circle icons for tabs (using on the About Us III page)*/
+
+.blue-i {
+    text-align: center;
+    line-height: 65px !important;
+    height: 65px;
+    width: 65px;
+    background: @primary;
+    color: @white;
+    font-size: 40px !important;
+    border-radius: @border-radius-round;
+    .transition(all 0.5s ease);
+    box-shadow: 0 0 0 1px @primary;
+    display: inline-block;
+}
+h1 > .blue-i,
+h2 > .blue-i,
+h3 > .blue-i {
+    margin-right: 20px;
+    vertical-align: sub;
+}
+.bg-info.blue-i,
+.bg-success.blue-i,
+.bg-warning.blue-i,
+.bg-danger.blue-i {
+    box-shadow: none;
+    border: none;
+}
+
+/* using on the Home Page version 2 (features) */
+
+.icon-o {
+    color: @primary;
+    box-shadow: 0 0 0 1px @light;
+    border-radius: @border-radius-round;
+    height: 100px;
+    width: 100px;
+    line-height: 100px !Important;
+    background: @white;
+    font-size: 50px !important;
+    display: inline-block;
+    .transition( all 0.35s ease);
+    .transform(scale(1));
+}
+.icon-o:hover,
+div:hover > .icon-o {
+        .transform(scale(0.9));
+}
+
+/* using on the Support page - categories, bottom of the page */
+
+.icon-c {
+    font-size: 40px !important;
+    color: @primary;
+    background: @white;
+    border-radius: @border-radius-round;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    line-height: 78px !important;
+    border: @border @extra-light;
+   .transition(all 0.35s ease-out);
+    display: inline-block;
+}
+.float-box:hover .icon-c,
+.icon-c:hover {
+    border-color: @primary;
+    background: @primary;
+    color: @white;
+}
+.bg-grey,
+.bg-grey-1,
+.bg-grey-2,
+.bg-grey-3,
+.bg-grey-4 {
+    .icon-c {
+        border: none;
+    }
+}
+
+
+/* using on pricing tables page */
+
+.icon-u {
+    color: @primary;
+    border-radius: @border-radius-round;
+    height: 100px;
+    width: 100px;
+    line-height: 100px !Important;
+    background: @white;
+    font-size: 50px !important;
+    border: @border fade(#000, 5%);
+    box-shadow: 0 -3px 10px fade(#000, 15%);
+    display: inline-block;
+}
+
+/* menu icon */
+
+.icon-bars {
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background: @trn;
+    border: @border @extra-light;
+    white-space: nowrap;
+    padding: 10px;
+    line-height: 1.42857143;
+    border-radius: @border-radius;
+    .user-select(none);
+    .transition(all .5s ease-out);
+    &:hover {
+        background: #454545;
+    }
+    > .bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: @border-radius-large;
+        background: @extra-light;
+    }
+     .bar + .bar {
+        margin-top: 4px;
+    }
+}

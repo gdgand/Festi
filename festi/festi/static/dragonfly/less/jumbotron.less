@@ -1,0 +1,49 @@
+/*
+ * ===================================
+ * Jumbotron / Header 
+ * 
+ * includes: Transparent Jumbotron
+ * ===================================
+ * */
+
+/* Transparent Jumbotron */
+
+.jumbotron.trn {
+    background: @trn;
+    color: @white;
+}
+/* Top section - header of the home page */
+
+.sTop {
+    position: relative;
+    .jumbotron {
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .jumbotron h1 {
+        margin-top: 0;
+    }
+}
+@media (min-width: 1200px) {
+    .sTop {
+        min-height: 800px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+    .sTop {
+        min-height: 600px;
+    }
+}
+@media (max-width: 992px) {
+    .sTop {
+        min-height: 550px;
+        .jumbotron h1 {
+            font-size: 50px;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .sTop .jumbotron h1 {
+        font-size: 36px;
+    }
+}

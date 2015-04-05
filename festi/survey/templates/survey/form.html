@@ -1,7 +1,13 @@
 {% extends "survey/layout.html" %}
 
+{% block header %}
+{% endblock %}
+
 {% block content %}
 <style>
+    body {
+        padding-top: 60px;
+    }
     #survey_form ul {
         margin: 0;
         padding: 0;
@@ -11,36 +17,46 @@
         display: none;
     }
     #survey_form *[readonly=readonly] {
-        background: #eee;
+        background: #fff;
         border: 0;
     }
 </style>
 
 <div class="container">
     <div class="row">
-        <h3>
-        {% if not survey %}
-            {{ event.name }} 신청
-        {% else %}
-            {{ event.name }} 신청 수정
-        {% endif %}
-        </h3>
+        <div class="panel panel-success">
+            <div class="panel-header text-center">
+                <h3>
+                    {% if not survey %}
+                        {{ event.name }} 신청
+                    {% else %}
+                        {{ event.name }} 설문 수정
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="panel-body">
+                {% if survey %}
+                    {% if not survey.is_approved %}
+                        <div class="alert alert-default">승인대기 중</div>
+                    {% else %}
+                        <div class="alert alert-success">승인완료</div>
+                    {% endif %}
+                {% endif %}
 
-        {% if survey %}
-            {% if not survey.is_approved %}
-                <div class="alert alert-info">승인대기 중</div>
-            {% else %}
-                <div class="alert alert-success">승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)</div>
-            {% endif %}
-        {% endif %}
-
-        {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}
-
-        <form id="survey_form" action="" method="POST">
-            {% csrf_token %}
-            {{ form.props }}
-            <input type="submit" value="submit" class="btn btn-primary" >
-        </form>
+                <form id="survey_form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.props }}
+                    </div>
+                    <p class="text-right">
+                        <input type="submit" value="입력완료" class="btn btn-primary" />
+                    </p>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}

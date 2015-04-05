@@ -1,0 +1,25 @@
+// Button sizes
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}
+
+// Button basics
+.btn-basic(@btn-color, @btn-bg, @btn-border) {
+    color: @btn-color;
+    background-color: @btn-bg;
+    border-color: @btn-border !important;
+}
+
+// Button basics transparent 
+ .btn-trn-basic(@btn-color, @btn-bg, @btn-border) {
+     color: @btn-color;
+     background-color: @btn-bg;
+     border: @border @btn-border !important;
+ }
+ .btn-trn-basic-hover(@btn-color, @btn-bg-color) {
+     color: @btn-color;
+     background-color: @btn-bg-color;
+ }

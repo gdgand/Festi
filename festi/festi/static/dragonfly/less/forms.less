@@ -1,0 +1,212 @@
+/*
+ * ===================================
+ * Forms
+ * 
+ * includes: Form with Icon, Transparent Form, Sign Up/In Pages
+ * ===================================
+ * */
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: @grey;
+    background-color: @white;
+    background-image: none;
+    border: @border @light;
+    border-radius: @border-radius;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    .transition(all ease-in-out 0.25s);
+    &:focus {
+        outline: 0;
+        border-color: #ccc;
+    }
+}
+textarea.form-control {
+    line-height: normal !important;
+    padding-top: 13px !important;
+}
+
+/* Icon in form field */
+.control {
+    .hover-content;
+    i {
+        position: absolute;
+        font-size: 21px;
+        color: @light;
+        top: 0;
+        z-index: 2;
+        .transition(all 0.35s ease-out);
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        text-align: center;
+        left: 0;
+    }
+}
+
+.icon {
+    .btn {
+    min-height: 44px;
+    //padding: 11px 15px;
+    }
+    .form-control {
+        min-height: 42px;
+        padding: 0 15px 0 42px;
+        line-height: 42px;
+    }
+}
+
+/* Large Form without icons */
+
+.form-lg {
+    .form-control {
+        min-height: 44px;
+        padding: 0 15px;
+        line-height: 44px;
+    }
+    .btn {
+        min-height: 46px;
+        padding: 11.5px 15px;
+    }
+}
+
+/* Normal Form (without icons) */
+
+.no-icon {
+    .form-control {
+        padding: 6px 12px;
+    }
+    .btn-form {
+        background-color: @white;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        border-left: 0;
+    }
+}
+
+/* Transparent Form */
+
+.trn {
+    .form-control {
+        min-height: 44px;
+        color: @white;
+        background-color: transparent;
+        border: @border @white;
+        border-right: 0;
+        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+        &:focus {
+            border-color: @white;
+            outline: 0;
+            box-shadow: none;
+        }
+        &:-webkit-input-placeholder {
+            color: @white !important;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder {
+            color: @white !important;
+            opacity: 1;
+        }
+        &:-moz-placeholder {
+            color: @white !important;
+            opacity: 1;
+        }
+    }
+}
+
+/* Total Transparent Form */
+
+.all-trn .form-control {
+    color: @grey;
+    background-color: transparent;
+    border: none;
+    border-bottom: @border @extra-light;
+    box-shadow: none;
+    border-radius: 0;
+    padding-bottom: 1px;
+    &:focus {
+        border-bottom-color: #ccc !important;
+    }
+    &:-moz-placeholder {
+        color: @grey;
+    }
+    &:-webkit-input-placeholder {
+        color: @grey;
+    }
+    &:-ms-input-placeholder {
+        color: @grey;
+    }
+}
+
+/*  Sign Up/In Pages */
+
+.sign-up {
+    background-color: @white;
+    background-color: fade(@white, 75%);
+    z-index: 2;
+    padding: 20px 40px;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
+    .hover-content;
+}
+@media (min-width: 768px) {
+    .sign-up {
+        min-width: 600px;
+    }
+}
+@media (max-width: 650px) {
+    .sign-up {
+        min-width: 400px;
+    }
+}
+@media (max-width: 500px) {
+    .sign-up {
+        min-width: 300px;
+    }
+}
+@media (max-width: 300px) {
+    .sign-up {
+        min-width: 100%;
+    }
+}
+.sign-up-hr {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 80%;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    bottom: 10%;
+}
+.sign-up-title {
+    margin: 0 0 20px;
+    color: #555;
+}
+.sign-up-btn {
+    background: #aaa;
+    color: @white;
+    border-radius: @border-radius;
+    margin-bottom: 15px;
+    max-width: 260px;
+    .transition(all 0.35s ease-out);
+    .icon {
+        font-size: 24px;
+        line-height: 44px;
+        display: inline-block;
+        border-right: @border @extra-light;
+        vertical-align: top;
+        height: 44px;
+        width: 50px;
+        text-align: center;
+        position: relative;
+    }
+    .text {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        line-height: 44px;
+        padding-left: 10px;
+    }
+}
