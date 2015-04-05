@@ -14,12 +14,10 @@ pip install -r /vagrant/festi/reqs/dev.txt
 cd /vagrant/festi/festi
 sudo -u vagrant -H bower install
 
-cd /vagrant/festi
-python manage.py syncdb
-python manage.py migrate
-
 echo "function server {" > /home/vagrant/.bashrc
 echo "cd /home/vagrant/festi" >> /home/vagrant/.bashrc
+echo "python manage.py syncdb" >> /home/vagrant/.bashrc
+echo "python manage.py migrate" >> /home/vagrant/.bashrc
 echo "python manage.py runserver 0.0.0.0:8000" >> /home/vagrant/.bashrc
 echo "}" >> /home/vagrant/.bashrc
 echo "function celery {" >> /home/vagrant/.bashrc
