@@ -1,17 +1,6 @@
 {% extends "conference/layout.html" %}
 
 {% comment %}
-    {% if not survey %}
-        <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" >신청하기</a>
-    {% else %}
-        이미 신청하셨습니다.
-        <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" >신청폼 수정</a>
-        {% if not survey.is_approved %}
-            승인대기 중
-        {% else %}
-            승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
-        {% endif %}
-    {% endif %}
 {% endcomment %}
 
 {% block content %}
@@ -27,6 +16,20 @@
         <div class="intro-heading">Conference</div>
         <div class="intro-lead-in">2015. 04. 18.</div>
         <!-- <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a> -->
+
+        <div>
+            {% if not survey %}
+                <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" class="btn btn-primary">신청하기</a>
+            {% else %}
+                <a href="{% url "survey:form" event.id %}" style="display: block; text-align: center; text-size: 3em;" class="btn btn-primary">신청폼 수정</a>
+                {% if not survey.is_approved %}
+                    승인대기 중
+                {% else %}
+                    승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
+                {% endif %}
+            {% endif %}
+        </div>
+
     </div>
 </div>
 </header>

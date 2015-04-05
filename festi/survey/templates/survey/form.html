@@ -24,6 +24,12 @@
     {% endif %}
     </h3>
 
+    {% if not survey.is_approved %}
+        승인대기 중
+    {% else %}
+        승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
+    {% endif %}
+
     {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}
 
     <form id="survey_form" action="" method="POST">
@@ -32,4 +38,3 @@
         <input type="submit" value="submit" >
     </form>
 {% endblock %}
-
