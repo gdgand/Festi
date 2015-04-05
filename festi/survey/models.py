@@ -2,6 +2,7 @@
 from django.db import models
 from jsonfield import JSONField
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 class Base(models.Model):

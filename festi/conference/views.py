@@ -1,8 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from survey.models import Event, Survey
 from .models import Speaker
 
 def index(request):
-    return render(request, 'conference/index.html')
+    event = get_object_or_404(Event, id=1)
+    try:
+        survey = Survey.objects.get(event=event, user=request.user)
+    except Survey.DoesNotExist:
+        survey = None
+    return render(request, 'conference/index.html', {
+        'event': event,
+        'survey': survey,
+    })
 
 def speaker(request):
     speaker_list = Speaker.objects.all()

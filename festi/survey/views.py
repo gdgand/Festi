@@ -18,7 +18,6 @@ def facebook_user_required(fn):
     return login_required(wrap)
 
 
-
 def index(request):
     return render(request, 'survey/index.html', {
     })
