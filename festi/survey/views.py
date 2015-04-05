@@ -90,7 +90,7 @@ def form(request, event_id):
                 props.append(prop)
 
         if not props:
-            messages.info(request, u'참가신청 준비 중입니다.')
+            messages.info(request, u'참가신청 입력폼을 준비 중입니다.')
             return redirect('conference:index')
 
         props = sorted(props, key=lambda _p: int(_p['id']))
