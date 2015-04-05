@@ -4,10 +4,14 @@ from .models import Speaker
 
 def index(request):
     event = get_object_or_404(Event, id=1)
-    try:
-        survey = Survey.objects.get(event=event, user=request.user)
-    except Survey.DoesNotExist:
-        survey = None
+
+    survey = None
+    if request.user.is_authenticated():
+        try:
+            survey = Survey.objects.get(event=event, user=request.user)
+        except Survey.DoesNotExist:
+            pass
+
     return render(request, 'conference/index.html', {
         'event': event,
         'survey': survey,
