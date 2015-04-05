@@ -19,7 +19,7 @@
     <script src="{{ STATIC_URL }}js/actions/FestiActions.js"></script>
     <title>{% block title %}conference{% endblock %}</title>
 </head>
-<body>
+<body id="page-top" class="index">
 
 <!-- navbar -->
 <div class="navbar navbar-header navbar-fixed-top navbar-default navbar-collapse collapse navbar-responsive-collapse">
@@ -31,13 +31,14 @@
     </ul>
 </div>
 
-
+<!--
     <ul>
         <li><a href="{% url "conference:index" %}">home</a></li>
         <li><a href="{% url "conference:speaker" %}">speaker</a></li>
         <li><a href="{% url "conference:about" %}">about</a></li>
     </ul>
 
+-->
     {% block content %}
     {% endblock %}
 </body>
