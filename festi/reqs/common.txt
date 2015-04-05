@@ -5,8 +5,5 @@ django-import-export==0.2.6
 jsonfield==1.0.3
 redis==2.10.3
 xlrd==0.9.3
-<<<<<<< HEAD
-django-import-export==0.2.6
 django-allauth==0.19.1
-=======
->>>>>>> c9101c103c732e18c9994dec0c507babb450a4cb
+django-adminplus==0.3

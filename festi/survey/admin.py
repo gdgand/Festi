@@ -1,5 +1,4 @@
 # coding: utf8
-from django.conf.urls import patterns
 from django.contrib import admin
 from import_export import resources
 from import_export.admin import ExportMixin
@@ -19,7 +18,8 @@ class SurveyResource(resources.ModelResource):
 
 
 class SurveyAdmin(ExportMixin, admin.ModelAdmin):
-    list_display = ('event', 'user', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
+    list_display = ('id', 'event', 'user_detail', 'is_approved', 'is_notified', 'is_attended', 'created_at', 'updated_at')
+    list_display_links = ('id', 'user_detail',)
     list_editable = ('is_approved', 'is_attended')
     list_filter = ('is_approved', 'is_notified', 'is_attended')
     ordering = ('created_at', 'updated_at')
@@ -27,14 +27,11 @@ class SurveyAdmin(ExportMixin, admin.ModelAdmin):
     actions = ['send_approve_email']
     exclude = ('props',)
 
-    def get_urls(self):
-        urls = super(SurveyAdmin, self).get_urls()
-        return urls + patterns('',
-            (r'^props/$', self.admin_site.admin_view(self.props_view)),
-        )
+    def user_detail(self, survey):
+        return survey.user.email
 
-    def props_view(self):
-        return 'props_view : {}'.format(self)
+    def props_detail(self, survey):
+        return '\n\n'.join(u'Q : {question}\nA : {answer}'.format(**prop) for prop in survey.props)
 
     def send_approve_email(self, request, queryset):
         count = 0
@@ -52,6 +49,9 @@ class SurveyAdmin(ExportMixin, admin.ModelAdmin):
     send_approve_email.short_description = u'선택/승인된 survey 유저에게 승인메일 보내기'
 
     resource_class = SurveyResource
+
+    def get_readonly_fields(self, request, obj=None):
+        return ('event', 'user', 'props_detail')
 
     def has_add_permission(self, request):
         return False
