@@ -1,11 +1,11 @@
 {% extends "conference/layout.html" %}
 
 {% block content %}
-
 <style>
     #survey_form ul {
         margin: 0;
         padding: 0;
+        list-style: none;
     }
     #survey_form label {
         display: none;
@@ -16,25 +16,29 @@
     }
 </style>
 
-    <h3>
-    {% if not survey %}
-        {{ event.name }} 신청
-    {% else %}
-        {{ event.name }} 신청 수정
-    {% endif %}
-    </h3>
+<div class="container">
+    <div class="row">
+        <h3>
+        {% if not survey %}
+            {{ event.name }} 신청
+        {% else %}
+            {{ event.name }} 신청 수정
+        {% endif %}
+        </h3>
 
-    {% if not survey.is_approved %}
-        승인대기 중
-    {% else %}
-        승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)
-    {% endif %}
+        {% if not survey.is_approved %}
+            <div class="alert alert-info">승인대기 중</div>
+        {% else %}
+            <div class="alert alert-success">승인되었습니다. 컨퍼런스에서 뵙겠습니다. :-)</div>
+        {% endif %}
 
-    {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}
+        {# <img src="{{ avatar_url }}" style="display: block; width: 100px;" /> #}
 
-    <form id="survey_form" action="" method="POST">
-        {% csrf_token %}
-        {{ form.props }}
-        <input type="submit" value="submit" >
-    </form>
+        <form id="survey_form" action="" method="POST">
+            {% csrf_token %}
+            {{ form.props }}
+            <input type="submit" value="submit" class="btn btn-primary" >
+        </form>
+    </div>
+</div>
 {% endblock %}

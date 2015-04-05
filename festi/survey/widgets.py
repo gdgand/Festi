@@ -144,9 +144,6 @@ class SplitJSONWidget(forms.Widget):
             else:
                 return v
 
-        print '---- raw_data ----'
-        print repr(raw_data)
-
         for k, v in raw_data.iteritems():
             if k in copy_raw_data:
                 # to transform value from list to string
