@@ -108,7 +108,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = ROOT('..', 'staticfiles')
+STATIC_ROOT = ROOT('staticfiles')
 STATICFILES_DIRS = (
     ROOT('festi', 'static'),
     ROOT('festi', 'bower_components'),
