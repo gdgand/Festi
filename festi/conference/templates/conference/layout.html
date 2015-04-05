@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta id="viewport" name="viewport" content="width=320, initial-scale=1, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scalable=no;" />
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap-material-design/dist/css/material.min.css" />
+    <script src="{{ STATIC_URL }}bootstrap-material-design/dist/js/material.js"></script>
+    <script src="{{ STATIC_URL }}jquery/dist/jquery.js"></script>
+    {% comment %}
     <script src="{{ STATIC_URL }}react/react-with-addons.js"></script>
     <script src="{{ STATIC_URL }}react/JSXTransformer.js"></script>
     <script src="{{ STATIC_URL }}eventEmitter/EventEmitter.js"></script>
@@ -17,6 +16,7 @@
     <script src="{{ STATIC_URL }}js/dispatchers/AppDispatcher.js"></script>
     <script src="{{ STATIC_URL }}js/stores/FestiStores.js"></script>
     <script src="{{ STATIC_URL }}js/actions/FestiActions.js"></script>
+    {% endcomment %}
     <title>{% block title %}conference{% endblock %}</title>
 </head>
 <body id="page-top" class="index">
