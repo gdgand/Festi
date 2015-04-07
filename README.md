@@ -14,6 +14,11 @@ vagrant up
 
 ````
 vagrant ssh
+
+export AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
+export AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>
+export AWS_STORAGE_BUCKET_NAME=<YOUR_AWS_STORAGE_BUCKET_NAME>
+
 server
 ````
 
@@ -32,6 +37,38 @@ vagrant reload --provision
 ````
 
 ### Docker 설정
+
+도커 이미지를 만들어 올릴 때는 아래의 방법을 사용합니다.
+
+````
+docker build -t <your_target>/festi .
+docker push <your_target>/festi
+
+````
+
+서버사이드에서는 이미지를 받아야 합니다.
+
+````
+docker pull <your_target>/festi
+````
+
+이미지를 실행합시다.
+
+````
+docker run --name festi -t -p 8000:8000 \
+    -e RDS_NAME=A \
+    -e RDS_USER=B \
+    -e RDS_PASSWORD=C \
+    -e RDS_HOST=D \
+    -e AWS_ACCESS_KEY_ID=E \
+    -e AWS_SECRET_ACCESS_KEY=F \
+    -e AWS_STORAGE_BUCKET_NAME=G \
+    <your_target>/festi
+````
+
+A부터 G까지 그리고 <your_target>에 넣어야 할 내용은 서버의 구성에 따라 달라집니다.
+
+만약 Docker를 개발용 임시 리포지토리에서 유지보수할 경우에는 별도의 설정이 필요합니다.
 
 #### Ubuntu
 ubuntu `/etc/default/docker` 파일을 열어 아래와 같이 추가합니다.

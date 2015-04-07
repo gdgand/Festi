@@ -6,10 +6,10 @@
     <div class="bg-filter sTop">
         <div class="container">
             <div class="jumbotron trn v-center">
-                <h1>Google Korea Android Conference</h1>
+                <h1>GDG Korea Android Conference</h1>
                 <div class="space-sm"></div>
-                <p>강남구 영동대로 417, 오토웨이타워, 구글캠퍼스 서울<br/>
-                2015.04.18</p>
+                <p>구글 캠퍼스 서울, 강남구 영동대로 417 오토웨이타워<br/>
+                2015년 4월 18일 오후 1시 ~ 6시</p>
                 <div class="space-sm"></div>
 
                 {% if messages %}
@@ -22,11 +22,6 @@
                 {% endif %}
 
                 <ul class="list-inline">
-                    <!--
-                    <li><a href="#" class="btn btn-default-trn btn-xlg scroll"><i class="fa fa-bolt"></i>Start a trial</a></li>
-                    <li><a href="#learn-more" class="btn btn-primary btn-xlg scroll"><i class="fa fa-paper-plane-o"></i>Learn More</a></li>
-                    -->
-
                     {% if not survey %}
                         <li>
                             <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary btn-xlg">
@@ -119,6 +114,7 @@
         <div class="row">
             <p><img src="{{ STATIC_URL }}survey/google-campus-map.jpg" style="width: 100%;" /></p>
             <p>
+                <a href="https://goo.gl/maps/rtUWW" target="_blank"><i class="fa fa-map-marker"></i> 구글 지도</a> &nbsp;
                 <a href="http://map.daum.net/?urlX=514079&urlY=1113010&q=%EC%84%9C%EC%9A%B8+%EA%B0%95%EB%82%A8%EA%B5%AC+%EC%98%81%EB%8F%99%EB%8C%80%EB%A1%9C+417" target="_blank"><i class="fa fa-map-marker"></i> 다음 지도</a> &nbsp;
                 <a href="http://map.daum.net/?urlX=514079&urlY=1113010&q=%EC%84%9C%EC%9A%B8+%EA%B0%95%EB%82%A8%EA%B5%AC+%EC%98%81%EB%8F%99%EB%8C%80%EB%A1%9C+417" target="_blank"><i class="fa fa-map-marker"></i> 네이버 지도</a>
             </p>
