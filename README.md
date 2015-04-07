@@ -68,7 +68,9 @@ docker run --name festi -t -p 8000:8000 \
 
 A부터 G까지 그리고 <your_target>에 넣어야 할 내용은 서버의 구성에 따라 달라집니다.
 
-만약 Docker를 개발용 임시 리포지토리에서 유지보수할 경우에는 별도의 설정이 필요합니다.
+위의 내용을 기반으로 사용하는 서버에 맞추어 설정해보세요. [GDG Korea Android](http://event.android.gdg.kr)은 upstart에서 해당 커맨드를 실행하고 있습니다.
+
+만약 Docker를 도커 레지스트리를 설치하여 임시 리포지토리를 사용 할 경우 별도의 설정이 필요합니다.
 
 #### Ubuntu
 ubuntu `/etc/default/docker` 파일을 열어 아래와 같이 추가합니다.
@@ -86,26 +88,9 @@ sudo service docker restart
 #### Mac
 
 `boot2docker ssh`로 쉘에 접속하여 `/var/lib/boot2docker/profile` 파일을 만들어 아래의 내용을 넣습니다.`
+
 ````
 EXTRA_ARGS="--insecure-registry registry.android.gdg.kr"
 ````
 
 `sudo /etc/init.d/docker restart`을 쉘에 입력하여 갱신합니다.
-
-
-## celery
-
-broker 로 redis-server 사용
-
-````
-python manage.py celery worker --events &
-python manage.py celery events
-````
-
-## backend/settings_local.py example
-
-```
-SECRET_KEY = 'qRg\x0bw,^oXr)(MZ3|~!\\bT~o\\cGb\\J*R~XJ`r-Uc*bE9~,rBlk1'
-EMAIL_HOST_USER = 'example@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
-````
