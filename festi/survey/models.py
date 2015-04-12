@@ -56,7 +56,7 @@ class Event(Base):
         writer = csv.writer(f)
         writer.writerow([(col or '').encode('utf8') for col in header])
 
-        for survey in self.survey_set.all():
+        for survey in self.survey_set.select_related('user').all():
             row = [survey.user.email, survey.is_approved, survey.is_notified, survey.is_attended]
             row.extend([prop['answer'] for prop in survey.props])
             writer.writerow([(col or '').encode('utf8') for col in row])
