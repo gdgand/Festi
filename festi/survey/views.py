@@ -1,6 +1,7 @@
 # coding: utf8
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import SurveyForm
 from .models import Event, Speaker, Survey
@@ -103,4 +104,16 @@ def form(request, event_id):
         'form': form,
         'avatar_url': request.facebook_account.get_avatar_url(),
     })
+
+
+@login_required
+def export(request, event_slug):
+    if not request.user.is_superuser:
+        return HttpResponse('Unauthorized', status=401)
+
+    event = get_object_or_404(Event, slug=event_slug)
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="export.csv"'
+    return event.export_csv(response)
 

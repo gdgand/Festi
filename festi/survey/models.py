@@ -1,4 +1,6 @@
 # coding: utf8
+import csv
+from codecs import BOM_UTF8
 import os
 import random
 from django.db import models
@@ -46,6 +48,20 @@ class Event(Base):
             'begin': self.begin,
             'end': self.end,
         }
+
+    def export_csv(self, f):
+        header = ['email', 'is_approved', 'is_notified', 'is_attended']
+
+        f.write(BOM_UTF8)
+        writer = csv.writer(f)
+        writer.writerow([(col or '').encode('utf8') for col in header])
+
+        for survey in self.survey_set.all():
+            row = [survey.user.email, survey.is_approved, survey.is_notified, survey.is_attended]
+            row.extend([prop['answer'] for prop in survey.props])
+            writer.writerow([(col or '').encode('utf8') for col in row])
+
+        return f
 
 
 class Speaker(models.Model):
