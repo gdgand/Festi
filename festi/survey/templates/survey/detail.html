@@ -23,7 +23,7 @@
 
                 <ul class="list-inline">
                     {% if not survey %}
-                        {# 페이스북 로그아웃 상태 #}}
+                        {# 페이스북 로그아웃 상태 #}
                         <li>
                             {% if not event.is_closed %}
                                 <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary btn-xlg">
