@@ -23,21 +23,39 @@
 
                 <ul class="list-inline">
                     {% if not survey %}
+                        {# 페이스북 로그아웃 상태 #}}
                         <li>
-                            <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary btn-xlg">
-                                <i class="fa fa-bolt"></i> 신청하기
-                            </a>
-                        </li>
-                    {% else %}
-                        <li>
-                            {% if not survey.is_approved %}
-                                <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-default-trn btn-xlg">
-                                    승인대기 중
+                            {% if not event.is_closed %}
+                                <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-primary btn-xlg">
+                                    <i class="fa fa-bolt"></i> 참가신청하기
                                 </a>
                             {% else %}
-                                <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-success btn-xlg">
-                                    승인완료
+                                <a style="text-align: center; text-size: 3em;" class="btn btn-default btn-xlg" disabled="disabled">
+                                    <i class="fa fa-close"></i> 참가신청이 마감되었습니다.
                                 </a>
+                                <br/>
+                                <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em; padding-top: 2em;">
+                                    승인여부 확인하기
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% else %}
+                        {# 페이스북 로그인 상태 #}
+                        <li>
+                            {% if survey.is_approved %}
+                                <a style="text-align: center; text-size: 3em;" class="btn btn-success btn-xlg" disabled="disabled">
+                                    승인되셨습니다. 컨퍼런스 때 뵐께요.
+                                </a>
+                            {% else %}
+                                {% if not event.is_closed %}
+                                    <a href="{% url "survey:form" event.id %}" style="text-align: center; text-size: 3em;" class="btn btn-default-trn btn-xlg">
+                                        승인대기 중
+                                    </a>
+                                {% else %}
+                                    <a style="text-align: center; text-size: 3em;" class="btn btn-default btn-xlg" disabled="disabled">
+                                        {{ user }}님. 아쉽지만 다음 컨퍼런스에 함께 해요.
+                                    </a>
+                                {% endif %}
                             {% endif %}
                         </li>
                     {% endif %}

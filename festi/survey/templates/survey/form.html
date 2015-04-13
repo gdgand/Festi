@@ -35,23 +35,36 @@
                 </h3>
             </div>
             <div class="panel-body">
-                {% if survey %}
+                {% if survey.event.is_closed %}
                     {% if not survey.is_approved %}
-                        <div class="alert alert-default">승인대기 중</div>
+                        <div class="alert alert-info">
+                            {{ user }}님. 아쉽지만 다음 컨퍼런스에 함께 해요.
+                        </div>
                     {% else %}
-                        <div class="alert alert-success">승인완료</div>
+                        <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐께요.</div>
                     {% endif %}
-                {% endif %}
+                {% else %}
+                    {% if survey %}
+                        {% if not survey.is_approved %}
+                            <div class="alert alert-info">승인대기 중</div>
+                        {% else %}
+                            <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐께요.</div>
+                        {% endif %}
+                    {% endif %}
 
-                <form id="survey_form" action="" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {{ form.props }}
-                    </div>
-                    <p class="text-right">
-                        <input type="submit" value="입력완료" class="btn btn-primary" />
-                    </p>
-                </form>
+                    <form id="survey_form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.props }}
+                        </div>
+                        <p class="text-right">
+                            <input type="submit" value="입력완료" class="btn btn-primary" />
+                        </p>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="panel-footer">
+                <a href="{% url "conference:index" %}">돌아가기</a>
             </div>
         </div>
     </div>

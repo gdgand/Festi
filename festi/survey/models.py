@@ -35,6 +35,7 @@ class Event(Base):
     begin = models.DateTimeField()
     end = models.DateTimeField()
     is_public = models.BooleanField(default=False, db_index=True)
+    is_closed = models.BooleanField(default=True, db_index=True)
     approve_email_content = models.TextField(blank=True, null=True, help_text=u'첫 줄은 제목')
 
     def __unicode__(self):
