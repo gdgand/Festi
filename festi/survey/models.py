@@ -50,14 +50,23 @@ class Event(Base):
         }
 
     def export_csv(self, f):
-        header = ['email', 'is_approved', 'is_notified', 'is_attended']
+        header = ['email', 'name', 'gender', 'is_approved', 'is_notified', 'is_attended']
+
 
         f.write(BOM_UTF8)
         writer = csv.writer(f)
         writer.writerow([(col or '').encode('utf8') for col in header])
 
         for survey in self.survey_set.select_related('user').all():
-            row = [survey.user.email, survey.is_approved, survey.is_notified, survey.is_attended]
+            try:
+                social = survey.user.socialaccount_set.first()
+                name = social.extra_data['name']
+                gender = social.extra_data['gender']
+            except (AttributeError, KeyError):
+                name = ''
+                gender = ''
+
+            row = [survey.user.email, name, gender, survey.is_approved, survey.is_notified, survey.is_attended]
             row.extend([prop['answer'] for prop in survey.props])
             writer.writerow([(col or '').encode('utf8') for col in row])
 
