@@ -13,3 +13,13 @@ body {
 .bg-tiles {
     background-image: url("/static/survey/bg-tiles.jpg");
 }
+
+#timetable {
+    background-color: rgba(255, 255, 255, 200);
+}
+#timetable th, #timetable td {
+    text-align: center;
+}
+#timetable .speaker {
+    display: block;
+}
