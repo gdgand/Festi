@@ -41,14 +41,14 @@
                             {{ user }}님. 아쉽지만 다음 컨퍼런스에 함께 해요.
                         </div>
                     {% else %}
-                        <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐께요.</div>
+                        <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐게요.</div>
                     {% endif %}
                 {% else %}
                     {% if survey %}
                         {% if not survey.is_approved %}
                             <div class="alert alert-info">승인대기 중</div>
                         {% else %}
-                            <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐께요.</div>
+                            <div class="alert alert-success">승인되셨습니다. 컨퍼런스 때 뵐게요.</div>
                         {% endif %}
                     {% endif %}
 
